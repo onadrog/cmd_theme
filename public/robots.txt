@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /imgs/
+Disallow: /icons/
+Sitemap: http://localhost:3000/sitemap-index.xml

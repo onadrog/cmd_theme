@@ -1,0 +1,19 @@
+---
+import "../styles/components/_cmd.scss";
+const {title} = Astro.props
+const titleLen = title.length + 5;
+---
+
+<header class="cmd">
+    <p aria-hidden="true" class="ter-fail">
+        <span aria-hidden="true">~ ^C</span><span
+            class="cmd-ter--fail"
+            aria-hidden="true">~ ^C</span
+        >
+    </p>
+    <h1 class="cmd-title" style={`--steps: ${titleLen};`}>
+        <span aria-hidden="true" class="ter-cmd">~ cat&#32;</span>{title}<span
+            aria-hidden="true">/</span
+        >
+    </h1>
+</header>

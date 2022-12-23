@@ -1,0 +1,30 @@
+.footer {
+    text-align: center;
+  display: grid;
+  gap: 0.5em;
+  grid-template-areas:
+    "contact links"
+    "copyright copyright";
+  padding: 1rem;
+  grid-template-columns: repeat(2,1fr);
+  grid-template-rows: repeat(2,1fr);
+  place-items: center;
+
+  &-contact {
+    grid-area: contact;
+  }
+
+  &-links {
+    grid-area: links;
+    & > a {
+        padding: 0.5em;
+    }
+  }
+
+  &-copyright {
+    grid-area: copyright;
+    display: grid;
+    grid-auto-flow: row;
+    gap: inherit;
+  }
+}

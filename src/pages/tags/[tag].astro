@@ -1,0 +1,51 @@
+---
+import Card from "../../components/Card.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import type { Frontmatter } from "../../utils/types/frontmatter";
+export async function getStaticPaths() {
+    const allPosts = await Astro.glob("../blog/*.md");
+    const uniqueTags = [
+        ...new Set(allPosts.map((p) => p.frontmatter.tags).flat()),
+    ];
+    return uniqueTags.map((tag) => {
+        const filtered = allPosts.filter((p) =>
+            p.frontmatter.tags.includes(tag)
+        );
+        return {
+            params: { tag },
+            props: { posts: filtered },
+        };
+    });
+}
+
+const { tag } = Astro.params;
+const { posts } = Astro.props;
+---
+
+<BaseLayout
+    title={`#${tag}`}
+    description={`Tous les post de blog concernant le tag ${tag}`}
+>
+    <Fragment slot="main">
+        {
+            posts.map(
+                ({
+                    frontmatter,
+                    url,
+                }: {
+                    frontmatter: Frontmatter;
+                    url: string;
+                }) => (
+                    <Card
+                        title={frontmatter.title}
+                        pubDate={frontmatter.pubDate}
+                        description={frontmatter.description}
+                        url={url}
+                        image={frontmatter.image}
+                        tags={frontmatter.tags}
+                    />
+                )
+            )
+        }</Fragment
+    >
+</BaseLayout>

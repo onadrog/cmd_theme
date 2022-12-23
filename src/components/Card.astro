@@ -1,0 +1,72 @@
+---
+interface Image {
+    url: string;
+    alt: string;
+}
+
+interface Props {
+    title: string;
+    url: string;
+    description: string;
+    tags: string[];
+    image: Image;
+    pubDate: string;
+}
+
+import "../styles/components/_card.scss";
+
+const { image, title, url, description, tags, pubDate } = Astro.props;
+---
+
+<article class="card">
+    <header class="card-header">
+        {
+            image ? (
+                <picture class="card-header--img">
+                    <img
+                        src={`${image.url}.png`}
+                        loading="lazy"
+                        alt={image.alt}
+                        width="150"
+                    />
+                </picture>
+            ) : (
+                <picture class="card-header--img">
+                    <source srcset="/imgs/code.webp" type="image/webp" />
+                    <img
+                        src="/imgs/code.png"
+                        loading="lazy"
+                        alt="Une capture d'écran durant la création de ce ste utilisant Neovim."
+                        width="300"
+                        height="485"
+                    />
+                </picture>
+            )
+        }
+        <h3 class="card-header--title">{title}</h3>
+        <p class="card-header--pubDate"><time datetime={pubDate}
+                >{
+                    new Date(pubDate).toLocaleString("fr", {
+                        dateStyle: "medium",
+                    })
+                }</time
+            >
+        </p>
+        <div class="card-header--bg" aria-hidden="true"></div>
+    </header>
+    <article class="card-content">
+        <p class="card-content--description">{description}...</p>
+        <a class="card-content--link btn-primary" href={url}>Lire l'article</a>
+        <ul class="card-content--tags-list">
+            {
+                tags.map((t) => (
+                    <li class="card-content--link tag-link">
+                        <a  href={`/tags/${t}`}>
+                            #{t}
+                        </a>
+                    </li>
+                ))
+            }
+        </ul>
+    </article>
+</article>

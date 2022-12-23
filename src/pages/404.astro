@@ -1,0 +1,16 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import "../styles/components/_rm.scss";
+const desc = "La page demandée n'existe pas."
+---
+
+<BaseLayout title={"Erreur 404"} description={desc}>
+    <header slot="header" >
+        <span aria-hidden="true" class="rm-rf">~ sudo rm -rf --no-preserve-root /</span>
+        <h1>{desc}</h1>
+    </header>
+
+    <Fragment slot="main">
+        <p>Oups!<br />Erreur 404<br><small>SVP ne tapez <strong>JAMAIS</strong> cette commande dans un terminal de system unix!</small></p>
+    </Fragment>
+</BaseLayout>

@@ -1,0 +1,22 @@
+---
+import Footer from "../components/Footer.astro";
+import Head from "../components/Head.astro";
+import Navigation from "../components/Navigation.astro";
+import "../styles/base/_blogPosts.scss"
+const { frontmatter } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <Head title={frontmatter.title} description={frontmatter.description} />
+    </head>
+    <body>
+        <Navigation />
+        <header><h1>{frontmatter.title}</h1></header>
+        <main id="main" class="main main-blog">
+            <slot />
+        </main>
+        <Footer />
+    </body>
+</html>

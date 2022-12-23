@@ -1,0 +1,25 @@
+---
+import Navigation from "../components/Navigation.astro";
+import Footer from "../components/Footer.astro";
+import Head from "../components/Head.astro";
+import CmdHeader from "../components/CmdHeader.astro";
+
+const { title, description } = Astro.props;
+---
+
+<html lang="fr">
+    <head>
+        <Head title={title} description={description} />
+    </head>
+    <body>
+        <Navigation />
+        <slot name="header">
+            <CmdHeader title={title}/>
+        </slot>
+        <slot name="aside" />
+        <main class="main" id="main">
+            <slot name="main" />
+        </main>
+        <Footer />
+    </body>
+</html>

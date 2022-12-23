@@ -1,0 +1,35 @@
+@use "../mixins" as *;
+@use "sass:color";
+
+.btn {
+  cursor: pointer;
+  padding: 1em 1.6em;
+  border-radius: 100vmax;
+  width: max-content;
+}
+
+.tag {
+  padding: 0.3em;
+  border-radius: 0.3em;
+  color: hsl(var(--neutral));
+  font-weight: bold;
+}
+
+@include btn("primary") {
+  background-color: hsl(var(--neutral));
+  color: hsl(var(--accent));
+  &:hover,
+  &:focus-visible {
+    background-color: hsl(var(--neutral-lighten));
+    box-shadow: 0 1px 0.2em 0 hsl(var(--bgc));
+  }
+}
+
+@include tag("link") {
+  background-color: hsl(var(--accent));
+  cursor: pointer;
+  &:hover,
+  &:focus-visible {
+    background-color: color.hwb(39.7 38.7% 85.3% / 0.3);
+  }
+}
