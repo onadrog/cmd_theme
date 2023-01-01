@@ -38,6 +38,7 @@ const siteImg = new URL(image.src as string, Astro.url).toString();
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <link rel="alternate icon" type="image/x-icon" href="/favicon.ico" />
 <link rel="sitemap" href="/sitemap-index.xml" />
+<link rel="alternate" href={new URL("/rss.xml", Astro.site).toString()} type="application/rss+xml" title="My Website RSS feed">
 <title>{title}</title>
 
 <SEO

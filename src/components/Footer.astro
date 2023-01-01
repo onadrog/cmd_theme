@@ -17,17 +17,19 @@ const year = new Date().getFullYear();
         </a>
     </address>
     <p class="footer-links">
-        <a class="footer-links--rss" href="/rss.xml">RSS</a>
+        <a class="footer-links--rss" href="/rss.xml" target="_blank"><span class="sr-only">RSS Feed</span>
+            <Icon name="rss" size={18} aria-hidden="true" />
+        </a>
     </p>
     <p class="footer-copyright">
         <span> &#xa9; 2022 - {year} Sébastien Gordano.</span>
         <span class="footer-copyright--theme"
             ><a
                 href="https://github.com/onadrog/cmd_theme"
-                rel="nofollow noreferrer">cmd_theme</a
+                rel="nofollow noreferrer" target="_blank" >cmd_theme</a
             > made with <span aria-hidden="true">&#9829;</span><span
                 class="sr-only">love</span
-            > by <a href="https://github.com/onadrog" rel="nofollow noreferrer" >Sébastien Gordano</a></span
+            > by <a href="https://github.com/onadrog" rel="nofollow noreferrer" target="_blank">Sébastien Gordano</a></span
         >
     </p>
 </footer>
