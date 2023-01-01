@@ -1,0 +1,10 @@
+@mixin grid($cols, $width) {
+  .grid-#{$cols} {
+    @extend .grid;
+    @media (min-width: 40em) {
+      grid-template-columns: repeat(auto-fit, #{$width}px);
+      grid-template-rows: auto 1fr;
+      max-width: min(calc(#{$width * $cols}px + 3rem), 80vw);
+    }
+  }
+}
