@@ -20,8 +20,8 @@ const PageTitle = "Blog";
 const desc = "liste des posts";
 ---
 
-<BaseLayout title={PageTitle} description={desc} canonicalUrl={"blog"}>
-    <Fragment slot="main">
+<BaseLayout title={PageTitle} description={desc} canonicalURL={"blog"} className={"grid"} >
+    <Fragment slot="main" class="grid">
         {
             page.data.map(
                 ({

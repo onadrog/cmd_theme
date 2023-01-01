@@ -2,7 +2,7 @@
 export interface Props {
     title: string;
     description: string;
-    canonicalURL?: URL;
+    canonicalURL?: string ;
     pageType?: "article" | "website";
     img?: string | ImageMetadata;
 }
@@ -16,7 +16,7 @@ import {site} from "../data/site";
 const {
     title = site.title,
     description = site.description,
-    canonicalURL = new URL(Astro.url.pathname, Astro.site),
+    canonicalURL =  new URL(Astro.url.pathname, Astro.site),
     img = site.image,
     pageType = "article",
 } = Astro.props;
@@ -45,7 +45,7 @@ const siteImg = new URL(image.src as string, Astro.url).toString();
     title={title}
     description={description}
     siteName={site.siteName}
-    url={canonicalURL.toString()}
+    url={typeof canonicalURL === "string" ? new URL(canonicalURL, Astro.site).toString() : canonicalURL.toString()}
     pageType={pageType}
     twitterHandle={site.twitterCreator}
 />

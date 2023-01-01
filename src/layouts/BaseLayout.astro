@@ -1,13 +1,20 @@
 ---
+
+export interface Props extends headProps {
+    className?: string
+}
+
 import Navigation from "../components/Navigation.astro";
 import Footer from "../components/Footer.astro";
 import Head, { Props as headProps } from "../components/Head.astro";
 import CmdHeader from "../components/CmdHeader.astro";
+import { site } from "../data/site";
 
-const { ...head } = Astro.props as headProps;
+const { className = "container", ...head } = Astro.props;
 ---
 
-<html lang="fr">
+<!DOCTYPE html>
+<html lang={site.lang}>
     <head>
         <Head {...head} />
     </head>
@@ -17,7 +24,7 @@ const { ...head } = Astro.props as headProps;
             <CmdHeader title={head.title} />
         </slot>
         <slot name="aside" />
-        <main class="main" id="main">
+        <main class={className} id="main">
             <slot name="main" />
         </main>
         <Footer />

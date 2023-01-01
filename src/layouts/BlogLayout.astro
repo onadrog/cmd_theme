@@ -2,19 +2,19 @@
 import Footer from "../components/Footer.astro";
 import Head from "../components/Head.astro";
 import Navigation from "../components/Navigation.astro";
-// import "../styles/base/_blogPosts.scss";
-const { frontmatter } = Astro.props;
+import { site } from "../data/site";
+const { frontmatter: {title, description}, className="container" } = Astro.props;
 ---
 
 <!DOCTYPE html>
-<html lang="fr">
+<html lang={site.lang}>
     <head>
-        <Head title={frontmatter.title} description={frontmatter.description} />
+        <Head title={title} description={description} />
     </head>
     <body>
         <Navigation />
-        <header><h1>{frontmatter.title}</h1></header>
-        <main id="main" class="main main-blog">
+        <header><h1>{title}</h1></header>
+        <main id="main" class={className}>
             <article>
                 <slot />
             </article>
@@ -22,9 +22,3 @@ const { frontmatter } = Astro.props;
         <Footer />
     </body>
 </html>
-
-<style>
-.main-blog {
-    display: block;
-}
-</style>

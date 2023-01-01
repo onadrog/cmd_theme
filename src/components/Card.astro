@@ -1,21 +1,10 @@
 ---
-interface Image {
-    url: string;
-    alt: string;
-}
-
-interface Props {
-    title: string;
-    url: string;
-    description: string;
-    tags: string[];
-    image: Image;
-    pubDate: string;
-}
-
 import "../styles/components/_card.scss";
 import { Picture } from "@astrojs/image/components";
-const { image, title, url, description, tags, pubDate } = Astro.props;
+import type { Frontmatter } from "../utils/types/frontmatter";
+
+const { image, title, url, description, tags, pubDate } =
+    Astro.props as Frontmatter;
 ---
 
 <article class="card">
