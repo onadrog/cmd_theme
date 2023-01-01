@@ -1,13 +1,13 @@
 .footer {
-    text-align: center;
+  text-align: center;
   display: grid;
   gap: 0.5em;
   grid-template-areas:
     "contact links"
     "copyright copyright";
   padding: 1rem;
-  grid-template-columns: repeat(2,1fr);
-  grid-template-rows: repeat(2,1fr);
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
   place-items: center;
 
   &-contact {
@@ -17,7 +17,7 @@
   &-links {
     grid-area: links;
     & > a {
-        padding: 0.5em;
+      padding: 0.5em;
     }
   }
 
@@ -26,5 +26,10 @@
     display: grid;
     grid-auto-flow: row;
     gap: inherit;
+
+    a {
+      color: hsl(var(--accent));
+      font-weight: bold;
+    }
   }
 }

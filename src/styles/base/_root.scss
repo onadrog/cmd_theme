@@ -23,6 +23,18 @@
   --spacing: 3rem;
 }
 
+@media (prefers-color-scheme: dark) {
+  :root.dark {
+    --bgc: 216.7, 89.1%, 10.8%;
+    --bgc-darker: 216.7, 89.1%, 5.8%;
+    --txtc: 37.2, 38.7%, 85.3%;
+    --accent: 39.7, 43.5%, 65.3%;
+    --neutral: 179.4, 94.2%, 20.4%;
+    --neutral-lighten: 179.4, 94.2%, 25.4%;
+    --card-bg: 231.4, 14.9%, 18.4%;
+  }
+}
+
 body {
   font-size: var(--fs-0);
   display: grid;
@@ -49,7 +61,7 @@ body {
   }
 }
 
-.main {
+.grid {
   place-items: center;
   max-width: 80vw;
   display: grid;
@@ -111,14 +123,11 @@ body {
   margin: auto;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root.dark {
-    --bgc: 216.7, 89.1%, 10.8%;
-    --bgc-darker: 216.7, 89.1%, 5.8%;
-    --txtc: 37.2, 38.7%, 85.3%;
-    --accent: 39.7, 43.5%, 65.3%;
-    --neutral: 179.4, 94.2%, 20.4%;
-    --neutral-lighten: 179.4, 94.2%, 25.4%;
-    --card-bg: 231.4, 14.9%, 18.4%;
-  }
+.container {
+  width: 100%;
+  padding-right: calc(var(--spacing) * 0.5);
+  padding-left: calc(var(--spacing) * 0.5);
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
 }
