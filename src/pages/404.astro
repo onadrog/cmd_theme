@@ -1,16 +1,69 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import "../styles/components/_rm.scss";
-const desc = "La page demandée n'existe pas."
+// import "../styles/components/_rm.scss";
+const desc = "La page demandée n'existe pas.";
 ---
 
 <BaseLayout title={"Erreur 404"} description={desc}>
-    <header slot="header" >
-        <span aria-hidden="true" class="rm-rf">~ sudo rm -rf --no-preserve-root /</span>
+    <header class="cmd" slot="header">
+        <span aria-hidden="true" class="rm-rf"
+            >~ sudo rm -rf --no-preserve-root /</span
+        >
         <h1>{desc}</h1>
     </header>
 
-    <Fragment slot="main">
-        <p>Oups!<br />Erreur 404<br><small>SVP ne tapez <strong>JAMAIS</strong> cette commande dans un terminal de system unix!</small></p>
+    <Fragment slot="main" aria-hidden="true">
+        <p class="main-404">
+            Oups!<br />Erreur 404<br /><small aria-hidden="true"
+                >SVP ne tapez <strong>JAMAIS</strong> cette commande dans un terminal
+                de system unix!</small
+            >
+        </p>
     </Fragment>
 </BaseLayout>
+
+<style lang="scss">
+    .cmd {
+        width: calc(100% - 1rem);
+        & h1 {
+            margin: 3rem auto;
+            width: max-content;
+            font-size: var(--fs-5);
+        }
+    }
+
+    .rm-rf {
+        position: relative;
+        justify-self: start;
+        margin-inline-start: 1rem;
+        margin-block-end: 1rem;
+        width: max-content;
+        font-size: var(--fs-2);
+
+        &::before,
+        &::after {
+            content: "";
+            position: absolute;
+            background-color: hsl(var(--bgc));
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 1em;
+            animation: typewriter 9s steps(33) forwards;
+        }
+
+        &::after {
+            background-color: hsl(var(--txtc));
+            width: 1rem;
+            animation: typewriter 9s steps(33) forwards,
+                caret-blink 0.9s 9s infinite;
+        }
+    }
+    .main-404 {
+        text-align: center;
+        font-size: var(--fs-3);
+        & small {
+            font-size: var(--fs-0);
+        }
+    }
+</style>

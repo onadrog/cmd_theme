@@ -1,11 +1,51 @@
 ---
-import "../styles/base/_index.scss"
-import "../styles/components/_ui.scss"
-const { title, description } = Astro.props;
+export interface Props {
+    title: string;
+    description: string;
+    canonicalURL?: URL;
+    pageType?: "article" | "website";
+    img?: string | ImageMetadata;
+}
+
+import { getImage } from "@astrojs/image";
+import SEO from "simple-astro-seo";
+import "../styles/base/_index.scss";
+import "../styles/components/_ui.scss";
+import {site} from "../data/site";
+
+const {
+    title = site.title,
+    description = site.description,
+    canonicalURL = new URL(Astro.url.pathname, Astro.site),
+    img = site.image,
+    pageType = "article",
+} = Astro.props;
+
+const image = await getImage({
+    src: img,
+    width: 1080,
+    aspectRatio: 2,
+    format: "png",
+    alt: ""
+});
+
+const siteImg = new URL(image.src as string, Astro.url).toString();
 ---
 
+<!-- Base meta tags -->
 <meta charset="utf-8" />
-<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content={description} />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="alternate icon" type="image/x-icon" href="/favicon.ico" />
+<link rel="sitemap" href="/sitemap-index.xml" />
 <title>{title}</title>
+
+<SEO
+    image={siteImg}
+    title={title}
+    description={description}
+    siteName={site.siteName}
+    url={canonicalURL.toString()}
+    pageType={pageType}
+    twitterHandle={site.twitterCreator}
+/>

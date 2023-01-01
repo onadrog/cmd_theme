@@ -12,14 +12,15 @@ import "../../styles/components/_sidebar.scss";
 /* @ts-ignore */
 export async function getStaticPaths({ paginate }) {
     const allPosts = await Astro.glob("./*.md");
-    return paginate(allPosts, { pageSize: 5 });
+    const posts = allPosts.filter((post) => !post.frontmatter.draft);
+    return paginate(posts, { pageSize: 5 });
 }
 const { page } = Astro.props;
 const PageTitle = "Blog";
 const desc = "liste des posts";
 ---
 
-<BaseLayout title={PageTitle} description={desc}>
+<BaseLayout title={PageTitle} description={desc} canonicalUrl={"blog"}>
     <Fragment slot="main">
         {
             page.data.map(
@@ -57,7 +58,7 @@ const desc = "liste des posts";
                         </li>
                     ) : null
                 }
-            <!-- <li>{page.lastPage}</li> -->
+                <!-- <li>{page.lastPage}</li> -->
             </ul>
         </nav>
     </Fragment>
