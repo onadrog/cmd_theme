@@ -14,37 +14,23 @@ interface Props {
 }
 
 import "../styles/components/_card.scss";
-
+import { Picture } from "@astrojs/image/components";
 const { image, title, url, description, tags, pubDate } = Astro.props;
 ---
 
 <article class="card">
     <header class="card-header">
-        {
-            image ? (
-                <picture class="card-header--img">
-                    <img
-                        src={`${image.url}.png`}
-                        loading="lazy"
-                        alt={image.alt}
-                        width="150"
-                    />
-                </picture>
-            ) : (
-                <picture class="card-header--img">
-                    <source srcset="/imgs/code.webp" type="image/webp" />
-                    <img
-                        src="/imgs/code.png"
-                        loading="lazy"
-                        alt="Une capture d'écran durant la création de ce ste utilisant Neovim."
-                        width="300"
-                        height="485"
-                    />
-                </picture>
-            )
-        }
+        <Picture
+            src={image?.url || "/imgs/code.png"}
+            widths={[200, 300]}
+            sizes="(max-width: 40em) 80vw, 300px"
+            aspectRatio={1 / 1.6}
+            alt=""
+            class="card-header--img"
+        />
         <h3 class="card-header--title">{title}</h3>
-        <p class="card-header--pubDate"><time datetime={pubDate}
+        <p class="card-header--pubDate">
+            <time datetime={pubDate}
                 >{
                     new Date(pubDate).toLocaleString("fr", {
                         dateStyle: "medium",
@@ -61,9 +47,7 @@ const { image, title, url, description, tags, pubDate } = Astro.props;
             {
                 tags.map((t) => (
                     <li class="card-content--link tag-link">
-                        <a  href={`/tags/${t}`}>
-                            #{t}
-                        </a>
+                        <a href={`/tags/${t}`}>#{t}</a>
                     </li>
                 ))
             }

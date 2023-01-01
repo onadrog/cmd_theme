@@ -1,4 +1,5 @@
 ---
+import { Icon } from "astro-icon";
 const year = new Date().getFullYear();
 ---
 
@@ -11,13 +12,12 @@ const year = new Date().getFullYear();
             aria-label="github"
             href="https://github.com/onadrog"
         >
-            <img src="/icons/github.svg" alt="" aria-hidden="true" width="16" />
             <span class="sr-only">github</span>
+            <Icon name="github" size={18} aria-hidden="true" />
         </a>
     </address>
     <p class="footer-links">
         <a class="footer-links--rss" href="/rss.xml">RSS</a>
-        <a class="footer-links--sitemap" href="/sitemap-index.xml">Sitemap</a>
     </p>
     <p class="footer-copyright">
         <span> &#xa9; 2022 - {year} Sébastien Gordano.</span>
@@ -27,7 +27,7 @@ const year = new Date().getFullYear();
                 rel="nofollow noreferrer">cmd_theme</a
             > made with <span aria-hidden="true">&#9829;</span><span
                 class="sr-only">love</span
-            > by
-        Sébastien Gordano</span>
+            > by Sébastien Gordano</span
+        >
     </p>
 </footer>
