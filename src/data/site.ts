@@ -3,6 +3,7 @@ import type {ImageMetadata} from '@astrojs/image/dist/vite-plugin-astro-image';
 import image from "../assets/social.png"; 
 
 export interface Site {
+    lang: string
     siteName: string,
     title: string,
     description: string,
@@ -13,6 +14,7 @@ export interface Site {
 
 
 export const site: Site  = {
+    lang: "en",
     siteName: 'Cmd_Theme',
     title: "Welcome to my personal website.",
     description: 'This is my personal website, where I post news and some other test stuff.',

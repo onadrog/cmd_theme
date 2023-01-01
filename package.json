@@ -1,11 +1,11 @@
 {
   "name": "@cmd_theme",
   "type": "module",
-  "version": "0.0.1",
+  "version": "0.0.9",
   "private": true,
   "scripts": {
     "dev": "astro dev",
-    "start": "astro dev",
+    "check": "astro check && tsc --noEmit",
     "build": "astro check && tsc --noEmit && astro build",
     "preview": "astro preview",
     "astro": "astro",
