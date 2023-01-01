@@ -2,7 +2,7 @@
 import Footer from "../components/Footer.astro";
 import Head from "../components/Head.astro";
 import Navigation from "../components/Navigation.astro";
-import "../styles/base/_blogPosts.scss"
+// import "../styles/base/_blogPosts.scss";
 const { frontmatter } = Astro.props;
 ---
 
@@ -15,8 +15,16 @@ const { frontmatter } = Astro.props;
         <Navigation />
         <header><h1>{frontmatter.title}</h1></header>
         <main id="main" class="main main-blog">
-            <slot />
+            <article>
+                <slot />
+            </article>
         </main>
         <Footer />
     </body>
 </html>
+
+<style>
+.main-blog {
+    display: block;
+}
+</style>

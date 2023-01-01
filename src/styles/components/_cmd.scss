@@ -1,7 +1,7 @@
 .cmd {
   justify-self: start;
-  margin-inline-start: 1rem;
-  margin-block-end: 3rem;
+  // margin-inline-start: var(--spacing);
+  margin-block-end: calc(var(--spacing) * 0.5);
 
   &-title {
     width: max-content;
@@ -35,7 +35,7 @@
 }
 
 .ter-fail {
-  font-size: 2em;
+  font-size: var(--fs-2);
   font-family: sans-serif;
   display: flex;
   flex-direction: column;

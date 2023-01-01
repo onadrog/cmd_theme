@@ -1,6 +1,7 @@
 :root {
   // colors
   --bgc: 37.2, 38.7%, 85.3%;
+  --bgc-darker: 37.2, 38.7%, 75.3%;
   --txtc: 216.7, 89.1%, 10.8%;
   --accent: 179.4, 94.2%, 20.4%;
   --neutral: 39.7, 43.5%, 65.3%;
@@ -18,6 +19,8 @@
   --fs-3: clamp(1.3rem, calc(1.26rem + 0.17vw), 1.47rem);
   --fs-4: clamp(1.56rem, calc(1.49rem + 0.29vw), 1.83rem);
   --fs-5: clamp(1.87rem, calc(1.76rem + 0.44vw), 2.29rem);
+
+  --spacing: 3rem;
 }
 
 body {
@@ -35,6 +38,9 @@ body {
   padding: var(--spacing);
   font-weight: bold;
   width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   &-list {
     display: grid;
     grid-auto-flow: column;
@@ -48,7 +54,7 @@ body {
   max-width: 80vw;
   display: grid;
   gap: 1rem;
-  @media (min-width: 50em) {
+  @media (min-width: 40em) {
     grid-template-columns: repeat(auto-fit, 300px);
     grid-template-rows: auto 1fr;
     max-width: min(calc(900px + 3rem), 80vw);
@@ -106,8 +112,9 @@ body {
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root.dark {
     --bgc: 216.7, 89.1%, 10.8%;
+    --bgc-darker: 216.7, 89.1%, 5.8%;
     --txtc: 37.2, 38.7%, 85.3%;
     --accent: 39.7, 43.5%, 65.3%;
     --neutral: 179.4, 94.2%, 20.4%;
