@@ -1,0 +1,111 @@
+---
+import { Icon } from "astro-icon";
+---
+
+<theme-switcher id="themeToggle" class="theme-switcher" tabindex="0">
+    <label for="light"
+        ><span class="sr-only">Light mode</span>
+        <Icon name="sun" size={18} aria-hidden="true" class="light" />
+    </label>
+    <input
+        class="sr-only"
+        type="radio"
+        id="light"
+        name="theme-toggle"
+        value="light"
+    />
+    <label for="dark"
+        ><span class="sr-only">Dark mode</span>
+        <Icon name="moon" size={18} aria-hidden="true" class="dark" />
+    </label>
+    <input
+        class="sr-only"
+        type="radio"
+        id="dark"
+        name="theme-toggle"
+        value="dark"
+    />
+</theme-switcher>
+
+<script>
+    class ThemeSwitcher extends HTMLElement {
+        root: DOMTokenList;
+        theme: string;
+        inputs: NodeListOf<HTMLInputElement>;
+        constructor() {
+            super();
+            this.root = document.documentElement.classList;
+            this.theme = "";
+            this.inputs = this.querySelectorAll("input[name='theme-toggle']");
+        }
+
+        connectedCallback() {
+            this.getSessionStorage();
+            (
+                this.querySelector(
+                    `input[value=${this.theme}]`
+                ) as HTMLInputElement
+            ).checked = true;
+            this.inputs.forEach((i) =>
+                i.addEventListener("change", (e) => this.handleToggle(e))
+            );
+        }
+
+        getSessionStorage(): void {
+            if (sessionStorage.getItem("theme")) {
+                this.theme = sessionStorage.getItem("theme") as string;
+            } else if (
+                window.matchMedia("(prefers-color-scheme: dark)").matches
+            ) {
+                this.theme = "dark";
+            } else {
+                this.theme = "light";
+            }
+            this.changeTheme();
+        }
+
+        handleToggle(e: Event): void {
+            this.querySelector(`svg.${this.theme} > path`)!.setAttribute(
+                "fill-rule",
+                "evenodd"
+            );
+            const target = e.target as HTMLInputElement;
+            this.theme = target.value;
+            sessionStorage.setItem("theme", this.theme);
+            this.changeTheme();
+        }
+
+        changeTheme() {
+            if (this.theme === "light") {
+                this.root.remove("dark");
+            } else {
+                this.root.add("dark");
+            }
+            this.querySelector(`svg.${this.theme} > path`)!.setAttribute(
+                "fill-rule",
+                "nonzero"
+            );
+        }
+    }
+    customElements.define("theme-switcher", ThemeSwitcher);
+</script>
+
+<style lang="scss">
+    theme-switcher {
+        padding: 0.5em 1em;
+        border-radius: 100vmax;
+        display: flex;
+        justify-content: space-around;
+        gap: 0.3em;
+        background-color: hsl(var(--bgc-darker) , 0.6);
+        align-items: center;
+    }
+
+    label {
+        display: contents;
+        &:hover,
+        &:focus-visible {
+            cursor: pointer;
+        }
+    }
+</style>
