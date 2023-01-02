@@ -1,0 +1,27 @@
+---
+export interface Props {
+    imageSrc: string | ImageMetadata;
+    rounded?: boolean;
+    alt?: string;
+}
+
+import { Picture } from "@astrojs/image/components";
+import type { ImageMetadata } from "@astrojs/image/dist/vite-plugin-astro-image";
+
+const { rounded = true, imageSrc, alt = "" } = Astro.props;
+---
+
+<Picture
+    alt={alt}
+    sizes="(max-width: 375px) 75px, 150px"
+    src={typeof imageSrc === "string" ? import(imageSrc) : imageSrc}
+    class:list={{ rounded }}
+    widths={[75, 150]}
+    aspectRatio={1}
+/>
+
+<style>
+    .rounded {
+        border-radius: 100%;
+    }
+</style>
