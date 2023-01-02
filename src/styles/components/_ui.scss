@@ -5,6 +5,7 @@
   cursor: pointer;
   padding: 1em 1.6em;
   border-radius: 100vmax;
+  font-family: "HackBold";
   width: max-content;
 }
 
@@ -31,5 +32,43 @@
   &:hover,
   &:focus-visible {
     background-color: color.hwb(39.7 38.7% 85.3% / 0.3);
+  }
+}
+
+.term {
+  position: relative;
+  background-color: hsl(231.4, 14.9%, 18.4%);
+  padding-block-start: 1.6rem;
+  &::before {
+    content: "";
+    position: absolute;
+    height: 1.3rem;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background-color: hsl(221.7, 16.3%, 27.6%, 0.3);
+  }
+
+  &::after {
+    content: "";
+    width: 2.1rem;
+    position: absolute;
+    height: 0.6rem;
+    right: 6px;
+    top: 6px;
+    background: radial-gradient(
+          farthest-side,
+          hsl(var(--red)) 100%,
+          transparent
+        )
+        top right/ 0.6rem,
+      0.6rem,
+      radial-gradient(farthest-side, hsl(var(--green)) 100%, transparent)
+        center/ 0.6rem,
+      0.6rem,
+      radial-gradient(farthest-side, hsl(var(--yellow)) 100%, transparent) left /
+        0.6rem,
+      0.6rem;
+    background-repeat: no-repeat;
   }
 }

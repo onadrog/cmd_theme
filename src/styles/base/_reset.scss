@@ -1,7 +1,3 @@
-$h_bg: #fff !default;
-$h_c: #000 !default;
-$h_ff: "sans-serif";
-
 /* Box sizing rules */
 *,
 *::before,
@@ -79,31 +75,3 @@ select {
     scroll-behavior: auto !important;
   }
 }
-
-.hidden-menu {
-  position: absolute;
-  top: -10rem;
-  padding: 1rem;
-  border-radius: 1rem;
-  background-color: $h_bg;
-  color: $h_c;
-  font-family: $h_ff;
-
-  &:focus {
-    top: 0;
-    transition: top 350ms ease;
-  }
-}
-
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
-}
-

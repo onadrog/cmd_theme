@@ -1,4 +1,8 @@
 .cmd {
+  & > * {
+    font-size: var(--fs-3);
+    font-weight: 700;
+  }
   justify-self: start;
   // margin-inline-start: var(--spacing);
   margin-block-end: calc(var(--spacing) * 0.5);
@@ -35,8 +39,6 @@
 }
 
 .ter-fail {
-  font-size: var(--fs-2);
-  font-family: sans-serif;
   display: flex;
   flex-direction: column;
   position: relative;

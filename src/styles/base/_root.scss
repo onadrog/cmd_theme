@@ -1,3 +1,5 @@
+@use "../mixins/" as *;
+
 :root {
   // colors
   --bgc: 37.2, 38.7%, 85.3%;
@@ -6,9 +8,14 @@
   --accent: 179.4, 94.2%, 20.4%;
   --neutral: 39.7, 43.5%, 65.3%;
   --neutral-lighten: 39.7, 43.5%, 70.3%;
-  --red: 14.4, 50.2%, 52.7%;
-  --green: 87, 66.4%, 58%;
-  --yellow: 53.3, 100%, 79%;
+  // --red: 14.4, 50.2%, 52.7%;
+  // --green: 87, 66.4%, 58%;
+  // --yellow: 53.3, 100%, 79%;
+  --red: 9.9, 100%, 75.1%;
+  --green: 115.3, 100%, 75.1%;
+  --yellow: 60, 100%, 75.1%;
+  --purple: 249.9, 100%, 75.1%;
+
   --card-bg: transparent;
   // font size
   --fs--2: clamp(0.48rem, calc(0.53rem + -0.04vw), 0.52rem);
@@ -23,6 +30,10 @@
   --spacing: 3rem;
 }
 
+@include font_face("HackBold", $weight: 700);
+@include font_face("HackBold", $weight: 700, $format: "woff");
+@include font_face("HackRegular");
+@include font_face("HackRegular", $format: "woff");
 @media (prefers-color-scheme: dark) {
   :root.dark {
     --bgc: 216.7, 89.1%, 10.8%;
@@ -42,9 +53,34 @@ body {
   place-items: center;
   background-color: hsl(var(--bgc));
   color: hsl(var(--txtc));
-  font-family: sans-serif;
+  font-family: "HackRegular", sans-serif;
 }
 
+.hidden-menu {
+  position: absolute;
+  top: -10rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  background-color: hsl(var(--bgc-darker));
+  color: hsl(var(--txtc));
+
+  &:focus {
+    top: 0;
+    transition: top 350ms ease;
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
 .navigation {
   --spacing: 2em;
   padding: var(--spacing);
