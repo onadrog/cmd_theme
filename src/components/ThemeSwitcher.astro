@@ -2,7 +2,7 @@
 import { Icon } from "astro-icon";
 ---
 
-<theme-switcher id="themeToggle" class="theme-switcher" tabindex="0" aria-hidden="true" >
+<theme-switcher id="themeToggle" class="theme-switcher" tabindex="0">
     <label for="light"
         ><span class="sr-only">Light mode</span>
         <Icon name="sun" size={18} aria-hidden="true" class="light" />
@@ -40,6 +40,7 @@ import { Icon } from "astro-icon";
         }
 
         connectedCallback() {
+            this.setAttribute('aria-label', 'Change theme color.');
             this.getSessionStorage();
             (
                 this.querySelector(
