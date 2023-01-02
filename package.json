@@ -18,6 +18,7 @@
     "@astrojs/image": "^0.12.1",
     "@astrojs/rss": "^2.0.0",
     "@astrojs/sitemap": "^1.0.0",
+    "astro-compress": "1.1.24",
     "astro-icon": "^0.8.0",
     "sass": "^1.56.1",
     "sharp": "^0.31.3",

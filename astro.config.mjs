@@ -1,5 +1,6 @@
 import { defineConfig } from 'astro/config';
 import sitemap from "@astrojs/sitemap";
+import compress from 'astro-compress';
 
 // https://astro.build/config
 import image from "@astrojs/image";
@@ -15,5 +16,11 @@ export default defineConfig({
     },
     integrations: [sitemap(), image({
         serviceEntryPoint: "@astrojs/image/sharp"
-    })]
+    }), compress({
+        css: false,
+        html: true,
+        img: false,
+        js: false,
+        svg: false,
+    }),]
 });
