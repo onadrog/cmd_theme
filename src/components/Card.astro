@@ -2,6 +2,7 @@
 import "../styles/components/_card.scss";
 import { Picture } from "@astrojs/image/components";
 import type { Frontmatter } from "../utils/types/frontmatter";
+import { site } from "../data/site";
 
 const { image, title, url, description, tags, pubDate } =
     Astro.props as Frontmatter;
@@ -21,7 +22,7 @@ const { image, title, url, description, tags, pubDate } =
         <p class="card-header--pubDate">
             <time datetime={pubDate}
                 >{
-                    new Date(pubDate).toLocaleString("fr", {
+                    new Date(pubDate).toLocaleString(site.lang, {
                         dateStyle: "medium",
                     })
                 }</time
@@ -31,7 +32,7 @@ const { image, title, url, description, tags, pubDate } =
     </header>
     <article class="card-content">
         <p class="card-content--description">{description}...</p>
-        <a class="card-content--link btn-primary" href={url}>Lire l'article</a>
+        <a class="card-content--link btn-primary" href={url}>Read more</a>
         <ul class="card-content--tags-list">
             {
                 tags.map((t) => (

@@ -47,18 +47,17 @@ const desc = "liste des posts";
                 {
                     page.url.prev ? (
                         <li class="btn">
-                            <a href={page.url.prev}>Précedent</a>
+                            <a href={page.url.prev}>Previous</a>
                         </li>
                     ) : null
                 }
                 {
                     page.url.next ? (
                         <li class="btn">
-                            <a href={page.url.next}>Suivant</a>
+                            <a href={page.url.next}>Next</a>
                         </li>
                     ) : null
                 }
-                <!-- <li>{page.lastPage}</li> -->
             </ul>
         </nav>
     </Fragment>
