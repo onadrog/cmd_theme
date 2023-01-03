@@ -1,6 +1,7 @@
 import { defineConfig } from 'astro/config';
 import sitemap from "@astrojs/sitemap";
 import compress from 'astro-compress';
+import prefetch from '@astrojs/prefetch';
 
 // https://astro.build/config
 import image from "@astrojs/image";
@@ -22,5 +23,6 @@ export default defineConfig({
         img: false,
         js: false,
         svg: false,
-    }),]
+    }),
+    prefetch()]
 });
