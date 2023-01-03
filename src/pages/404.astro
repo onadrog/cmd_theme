@@ -1,28 +1,34 @@
 ---
+import CmdHeader from "../components/CmdHeader.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 // import "../styles/components/_rm.scss";
 const desc = "The page does not exists";
 ---
 
-<BaseLayout title={"404 Error"} description={desc}>
-    <header class="cmd" slot="header">
-        <span aria-hidden="true" class="rm-rf"
-            >~ sudo rm -rf --no-preserve-root /</span
-        >
-        <h1>{desc}</h1>
-    </header>
+<BaseLayout title={"Page Not Found"} description={desc}>
+    <CmdHeader slot="header" cmd={""} title={"sudo rm -rf --no-preserve-root"} />
 
     <Fragment slot="main" aria-hidden="true">
         <p class="main-404">
-            Oups!<br />Erreur 404<br /><small aria-hidden="true"
-                >SVP ne tapez <strong>JAMAIS</strong> cette commande dans un terminal
-                de system unix!</small
+            Oops!<br />Error 404 Not found<br /><small aria-hidden="true"
+                >Please <strong>NEVER</strong> write this command on a UNIX system
+                terminal!</small
             >
         </p>
     </Fragment>
 </BaseLayout>
 
 <style lang="scss">
+    .main-404 {
+        text-align: center;
+        font-size: var(--fs-3);
+        & small {
+            font-size: var(--fs-0);
+        }
+    }
+</style>
+
+<!-- <style lang="scss">
     .cmd {
         width: calc(100% - 1rem);
         & h1 {
@@ -66,4 +72,4 @@ const desc = "The page does not exists";
             font-size: var(--fs-0);
         }
     }
-</style>
+</style> -->

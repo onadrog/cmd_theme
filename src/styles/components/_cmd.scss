@@ -4,10 +4,10 @@
     font-weight: 700;
   }
   justify-self: start;
-  // margin-inline-start: var(--spacing);
   margin-block-end: calc(var(--spacing) * 0.5);
 
   &-title {
+    --timer: calc((var(--steps) / 2) * 0.4s);
     width: max-content;
     position: relative;
     visibility: hidden;
@@ -25,15 +25,15 @@
 
     &::before {
       background-color: hsl(var(--bgc));
-      animation: typewriter 3s steps(var(--steps)) 1.7s forwards;
+      animation: typewriter var(--timer) steps(var(--steps)) 1.7s forwards;
     }
 
     &::after {
       content: "";
       width: 1rem;
       background-color: hsl(var(--txtc));
-      animation: typewriter 3s steps(var(--steps)) 1.7s forwards,
-        caret-blink 0.9s 4.7s infinite;
+      animation: typewriter var(--timer) steps(var(--steps)) 1.7s forwards,
+        caret-blink 0.9s calc(var(--timer) + 1.7s) infinite;
     }
   }
 }
