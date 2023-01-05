@@ -14,7 +14,7 @@ const { rounded = true, imageSrc, alt = "" } = Astro.props;
 <Picture
     alt={alt}
     sizes="(max-width: 375px) 75px, 150px"
-    src={typeof imageSrc === "string" ? import(imageSrc) : imageSrc}
+    src={imageSrc}
     class:list={{ rounded }}
     widths={[75, 150]}
     aspectRatio={1}
