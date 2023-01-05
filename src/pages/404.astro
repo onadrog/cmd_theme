@@ -1,7 +1,6 @@
 ---
 import CmdHeader from "../components/CmdHeader.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
-// import "../styles/components/_rm.scss";
 const desc = "The page does not exists";
 ---
 
@@ -27,49 +26,3 @@ const desc = "The page does not exists";
         }
     }
 </style>
-
-<!-- <style lang="scss">
-    .cmd {
-        width: calc(100% - 1rem);
-        & h1 {
-            margin: 3rem auto;
-            width: max-content;
-            font-size: var(--fs-5);
-        }
-    }
-
-    .rm-rf {
-        position: relative;
-        justify-self: start;
-        margin-inline-start: 1rem;
-        margin-block-end: 1rem;
-        width: max-content;
-        font-size: var(--fs-2);
-
-        &::before,
-        &::after {
-            content: "";
-            position: absolute;
-            background-color: hsl(var(--bgc));
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 1em;
-            animation: typewriter 6s steps(33) forwards;
-        }
-
-        &::after {
-            background-color: hsl(var(--txtc));
-            width: 1rem;
-            animation: typewriter 6s steps(33) forwards,
-                caret-blink 0.9s 6s infinite;
-        }
-    }
-    .main-404 {
-        text-align: center;
-        font-size: var(--fs-3);
-        & small {
-            font-size: var(--fs-0);
-        }
-    }
-</style> -->
