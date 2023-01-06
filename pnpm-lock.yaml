@@ -5,7 +5,7 @@ specifiers:
   '@astrojs/prefetch': ^0.1.1
   '@astrojs/rss': ^2.0.0
   '@astrojs/sitemap': ^1.0.0
-  astro: ^1.9.0
+  astro: ^1.9.1
   astro-compress: 1.1.24
   astro-icon: ^0.8.0
   sass: ^1.57.1
@@ -18,7 +18,7 @@ devDependencies:
   '@astrojs/prefetch': 0.1.1
   '@astrojs/rss': 2.0.0
   '@astrojs/sitemap': 1.0.0
-  astro: 1.9.0_sass@1.57.1
+  astro: 1.9.1_sass@1.57.1
   astro-compress: 1.1.24
   astro-icon: 0.8.0
   sass: 1.57.1
@@ -666,7 +666,7 @@ packages:
   /@types/sax/1.2.4:
     resolution: {integrity: sha512-pSAff4IAxJjfAXUG6tFkO7dsSbTmf8CtUpfhhZ5VhkRpC4628tJhh3+V6H1E+/Gs9piSzYKT5yzHO5M4GG9jkw==}
     dependencies:
-      '@types/node': 18.11.18
+      '@types/node': 17.0.45
     dev: true
 
   /@types/sharp/0.31.0:
@@ -797,8 +797,8 @@ packages:
       svgo: 2.8.0
     dev: true
 
-  /astro/1.9.0_sass@1.57.1:
-    resolution: {integrity: sha512-wHHMOHgqBGV4L8ThjCeBuVHq0mGF1F515jRyp5ns0MzFcu2nFk1frlXBKZEfmMMM84cilq3HeimrRTLkIGxI8A==}
+  /astro/1.9.1_sass@1.57.1:
+    resolution: {integrity: sha512-aQ6rvAP4w4VCgipVYA/zPmnkuTbFrMZ/+x/sAv2W1uJHWU2iQmrVRrrjUFJl+i1TuYYlHAuC2vKK7aRyXCjD4A==}
     engines: {node: ^14.18.0 || >=16.12.0, npm: '>=6.14.0'}
     hasBin: true
     dependencies:
