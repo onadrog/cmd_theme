@@ -59,7 +59,8 @@ const author = site.authors.filter((a) => a.id === id);
 <style lang="scss">
     article {
         padding: 1em;
-        width: max-content;
+        max-width: 69ch;
+        min-width: 40ch;
         overflow: hidden;
         border-radius: 0.5em;
         text-align: start;
@@ -71,14 +72,15 @@ const author = site.authors.filter((a) => a.id === id);
         display: grid;
         grid-template-areas:
             "avatar spec"
-            ". spec";
+            "avatar spec";
+        place-items: center;
             h3 , strong {
                 color: hsl(var(--purple));
             }
         strong{
             font-family: "HackBold";
         }
-        Avatar {
+        & picture {
             grid-area: avatar;
         }
         div {
