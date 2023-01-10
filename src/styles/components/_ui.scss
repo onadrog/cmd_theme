@@ -72,3 +72,42 @@
     background-repeat: no-repeat;
   }
 }
+
+.switcher-wrapper {
+  padding: 0.5em 1em;
+  border-radius: 100vmax;
+  display: flex;
+  justify-content: space-around;
+  gap: 0.3em;
+  background-color: hsl(var(--bgc-darker), 0.6);
+  align-items: center;
+  label {
+    display: contents;
+    &:hover,
+    &:focus-visible {
+      cursor: pointer;
+    }
+  }
+}
+
+// crt effect
+.crt {
+  position: relative;
+}
+
+.crt::before {
+  content: " ";
+  display: block;
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+    linear-gradient(
+      90deg,
+      rgba(255, 0, 0, 0.06),
+      rgba(0, 255, 0, 0.06),
+      rgba(0, 0, 255, 0.06)
+    );
+  background-size: 100% 3px, 6px 100%;
+  pointer-events: none;
+  z-index: 2;
+}

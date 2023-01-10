@@ -2,7 +2,12 @@
 import { Icon } from "astro-icon";
 ---
 
-<theme-switcher id="themeToggle" class="theme-switcher" tabindex="0">
+<theme-switcher
+    id="themeToggle"
+    class="switcher-wrapper"
+    tabindex="0"
+    aria-label="Change theme color."
+>
     <label for="light"
         ><span class="sr-only">Light mode</span>
         <Icon name="sun" size={18} aria-hidden="true" class="light" />
@@ -40,7 +45,6 @@ import { Icon } from "astro-icon";
         }
 
         connectedCallback() {
-            this.setAttribute('aria-label', 'Change theme color.');
             this.getSessionStorage();
             (
                 this.querySelector(
@@ -90,23 +94,3 @@ import { Icon } from "astro-icon";
     }
     customElements.define("theme-switcher", ThemeSwitcher);
 </script>
-
-<style lang="scss">
-    theme-switcher {
-        padding: 0.5em 1em;
-        border-radius: 100vmax;
-        display: flex;
-        justify-content: space-around;
-        gap: 0.3em;
-        background-color: hsl(var(--bgc-darker) , 0.6);
-        align-items: center;
-    }
-
-    label {
-        display: contents;
-        &:hover,
-        &:focus-visible {
-            cursor: pointer;
-        }
-    }
-</style>
