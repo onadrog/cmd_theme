@@ -5,7 +5,7 @@ A theme for astro.
 ## Feat
 - Use Sass
 - Blog post pagination
-
+- Semantic / A11y ready
 
 ## Usage
 
@@ -26,5 +26,11 @@ You can modify default values in data/site.ts file.
 ## Astroadd cli
 
 You can use [Astroadd-cli](https://github.com/onadrog/astroadd-cli) to create markdown files with auto generate frontmatter.
+
+
+## A11y / Semantics Resources
+
+[style guide](https://a11y-style-guide.com/style-guide/)
+[W3C tuts](https://www.w3.org/WAI/tutorials/)
 
 ## License [Mit](LICENSE)

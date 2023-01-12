@@ -2,33 +2,28 @@
 import { Icon } from "astro-icon";
 ---
 
-<crt-switcher
-    class="switcher-wrapper"
-    aria-label="Toggle CRT screen effect."
-    tabindex="0"
->
-    <label for="crtSwicth">
-        <span class="sr-only">Enable the CRT mode</span>
+<crt-switcher class="switcher-wrapper" aria-label="Toggle CRT screen effect.">
+    <button
+        type="button"
+        data-action="aria-switch"
+        aria-labelledby="Toggle CRT screen effect."
+        aria-checked="false"
+        role="switch"
+    >
         <Icon name="computer" size={18} aria-hidden="true" />
-        <input
-            type="checkbox"
-            name="crtSwitch"
-            id="crtSwicth"
-            class="sr-only"
-        />
-    </label>
+    </button>
 </crt-switcher>
 
 <script>
     class CrtSwitcher extends HTMLElement {
         root: DOMTokenList;
         svgPath: SVGPathElement;
-        input: HTMLInputElement;
+        button: HTMLButtonElement;
         fill: string;
         constructor() {
             super();
             this.root = document.documentElement.classList;
-            this.input = this.querySelector("input") as HTMLInputElement;
+            this.button = this.querySelector("button") as HTMLButtonElement;
             this.svgPath = this.querySelector(
                 "svg > path.crt-screen"
             ) as SVGPathElement;
@@ -37,10 +32,7 @@ import { Icon } from "astro-icon";
 
         connectedCallback() {
             this.getSessionStorage();
-            this.fill === "currentColor"
-                ? (this.input.checked = true)
-                : (this.input.checked = false);
-            this.input.addEventListener("change", (e) => this.handleToggle(e));
+            this.button.addEventListener("click", () => this.handleToggle());
         }
 
         getSessionStorage(): void {
@@ -50,21 +42,21 @@ import { Icon } from "astro-icon";
             this.changeEffect();
         }
 
-        private handleToggle(e: Event) {
-            const target = e.target as HTMLInputElement;
-            if (target.checked) {
-                this.fill = "currentColor";
-            } else {
-                this.fill = "none";
-            }
+        private handleToggle() {
+            const session = sessionStorage.getItem("fill");
+            session === "none"
+                ? (this.fill = "currentColor")
+                : (this.fill = "none");
             this.changeEffect();
         }
 
         private changeEffect() {
             if (this.fill === "none") {
+                this.button.ariaChecked = "false";
                 this.root.remove("crt");
             } else {
                 this.root.add("crt");
+                this.button.ariaChecked = "true";
             }
             sessionStorage.setItem("fill", this.fill);
             this.svgPath.setAttribute("fill", this.fill);
@@ -73,3 +65,12 @@ import { Icon } from "astro-icon";
 
     customElements.define("crt-switcher", CrtSwitcher);
 </script>
+
+<style>
+    button {
+        border: 0;
+        background: transparent;
+        color: inherit;
+        cursor: pointer;
+    }
+</style>

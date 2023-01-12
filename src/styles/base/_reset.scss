@@ -41,6 +41,11 @@ body {
 
 svg {
   display: block;
+  pointer-events: none;
+}
+fieldset {
+  border: 0;
+  margin: 0;
 }
 
 /* Remove links underlines */

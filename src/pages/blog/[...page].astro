@@ -21,6 +21,7 @@ const desc = "liste des posts";
 
 <BaseLayout title={PageTitle} description={desc} canonicalURL={"blog"} className={"grid"} >
     <Fragment slot="main">
+        <h2 class="sr-only">List of blog posts</h2>
         {
             page.data.map(
                 ({
@@ -41,7 +42,7 @@ const desc = "liste des posts";
                 )
             )
         }
-        <nav class="nav-paginate">
+        <nav aria-label="pagination" class="nav-paginate">
             <ul>
                 {
                     page.url.prev ? (

@@ -3,37 +3,34 @@ import "../styles/components/_card.scss";
 import { Picture } from "@astrojs/image/components";
 import type { Frontmatter } from "../utils/types/frontmatter";
 import { site } from "../data/site";
-import {resolveLocalImage} from "../utils/getImages"
+import { resolveLocalImage } from "../utils/getImages";
 
 let { image, title, url, description, tags, pubDate } =
     Astro.props as Frontmatter;
-   image ? image : image = {url: "../assets/code.png", alt: ""};
+image ? image : (image = { url: "../assets/code.png", alt: "" });
 const resolvedImage = await resolveLocalImage(image.url, image.alt);
 ---
 
 <article class="card">
-    <header class="card-header">
-        <Picture
-            src={resolvedImage}
-            widths={[200, 300]}
-            sizes="(max-width: 40em) 80vw, 300px"
-            aspectRatio={1 / 1.6}
-            alt=""
-            class="card-header--img"
-        />
-        <h3 class="card-header--title">{title}</h3>
-        <p class="card-header--pubDate">
-            <time datetime={pubDate}
-                >{
-                    new Date(pubDate).toLocaleString(site.lang, {
-                        dateStyle: "medium",
-                    })
-                }</time
-            >
-        </p>
-        <div class="card-header--bg" aria-hidden="true"></div>
-    </header>
-    <article class="card-content">
+    <h3 class="card-title">{title}</h3>
+    <Picture
+        src={resolvedImage}
+        widths={[200, 300]}
+        sizes="(max-width: 40em) 80vw, 300px"
+        aspectRatio={1 / 1.6}
+        alt=""
+        class="card-img"
+    />
+    <p class="card-pubDate">
+        <time datetime={pubDate}
+            >{
+                new Date(pubDate).toLocaleString(site.lang, {
+                    dateStyle: "medium",
+                })
+            }</time
+        >
+    </p>
+    <div class="card-content">
         <p class="card-content--description">{description}...</p>
         <a class="card-content--link btn-primary" href={url}>Read more</a>
         <ul class="card-content--tags-list">
@@ -45,5 +42,5 @@ const resolvedImage = await resolveLocalImage(image.url, image.alt);
                 ))
             }
         </ul>
-    </article>
+    </div>
 </article>

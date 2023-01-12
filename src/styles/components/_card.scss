@@ -1,36 +1,3 @@
-/* .card {
-  display: grid;
-  position: relative;
-  border-radius: 0.5rem;
-  max-width: 300px;
-  text-align: center;
-  box-shadow: 0 1px 1px 0 hsl(0deg 0% 69%);
-  gap: 0.3rem;
-  overflow: hidden;
-
-  &-header {
-    &--title {
-      padding-inline: 0.5rem;
-    }
-
-    &--img {
-      background: linear-gradient(180deg, hsl(0deg 0% 100% / 0%), hsl(0deg 0% 69% / 80%));
-    }
-  }
-
-  &-content {
-    display: grid;
-    gap: inherit;
-    padding: 0.5rem;
-
-    &--tags-list {
-      display: grid;
-      grid-auto-flow: column;
-    }
-  }
-}
-*/
-
 .card {
   --pos: 0.3em;
   --padding: 0.2em;
@@ -42,31 +9,27 @@
   position: relative;
   transition: 0.3s;
 
-  &-header {
-    position: relative;
+  &-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: max-content;
+    background-color: hsl(0deg 0% 100% / 5%);
+    backdrop-filter: blur(16px);
+    border-radius: 0.2em;
+    padding: var(--padding);
+  }
 
-    &--title {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: max-content;
-      background-color: hsl(0deg 0% 100% / 5%);
-      backdrop-filter: blur(16px);
-      border-radius: 0.2em;
-      padding: var(--padding);
-    }
-
-    &--pubDate {
-      position: absolute;
-      top: var(--pos);
-      right: var(--pos);
-      width: max-content;
-      padding: var(--padding);
-      background-color: hsl(0deg 0% 100% / 5%);
-      backdrop-filter: blur(16px);
-      border-radius: 0.2em;
-    }
+  &-pubDate {
+    position: absolute;
+    top: var(--pos);
+    right: var(--pos);
+    width: max-content;
+    padding: var(--padding);
+    background-color: hsl(0deg 0% 100% / 5%);
+    backdrop-filter: blur(16px);
+    border-radius: 0.2em;
   }
 
   &-content {
@@ -122,25 +85,23 @@
         0.6rem;
       background-repeat: no-repeat;
     }
-    .card-header {
-      &--img {
-        // transition: 0.3s;
+    .card {
+      &-img {
         visibility: hidden;
       }
-      &--title {
+      &-title {
         background-color: transparent;
         top: 3rem;
         left: var(--pos);
         transform: none;
       }
-      &--pubDate {
+      &-pubDate {
         top: 1.5rem;
       }
-    }
-    .card-content {
-      // bottom: 1em;
-      // padding: 1em;
-      clip-path: unset;
+
+      &-content {
+        clip-path: unset;
+      }
     }
   }
 }
