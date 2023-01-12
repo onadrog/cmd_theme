@@ -31,6 +31,7 @@ You can use [Astroadd-cli](https://github.com/onadrog/astroadd-cli) to create ma
 ## A11y / Semantics Resources
 
 [style guide](https://a11y-style-guide.com/style-guide/)
-[W3C tuts](https://www.w3.org/WAI/tutorials/)
+
+[W3C](https://www.w3.org/WAI/tutorials/)
 
 ## License [Mit](LICENSE)
