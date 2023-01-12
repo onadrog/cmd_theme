@@ -39,6 +39,10 @@ body {
   line-height: 1.5;
 }
 
+svg {
+  display: block;
+}
+
 /* Remove links underlines */
 a {
   text-decoration: none;

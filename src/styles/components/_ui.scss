@@ -82,7 +82,6 @@
   background-color: hsl(var(--bgc-darker), 0.6);
   align-items: center;
   label {
-    display: contents;
     &:hover,
     &:focus-visible {
       cursor: pointer;
