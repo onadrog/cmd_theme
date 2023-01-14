@@ -1,13 +1,13 @@
 @mixin btn($suffix) {
-  .btn-#{$suffix} {
-    @extend .btn;
-    @content;
-  }
+    .btn-#{$suffix} {
+        @extend .btn;
+        @content;
+    }
 }
 
 @mixin tag($suffix) {
-  .tag-#{$suffix} {
-    @extend .tag;
-    @content;
-  }
+    .tag-#{$suffix} {
+        @extend .tag;
+        @content;
+    }
 }

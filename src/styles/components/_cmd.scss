@@ -1,117 +1,117 @@
 .cmd {
-  & > * {
-    font-size: var(--fs-3);
-    font-weight: 700;
-  }
-  justify-self: start;
-  margin-block-end: calc(var(--spacing) * 0.5);
-
-  &-title {
-    --timer: calc((var(--steps) / 2) * 0.4s);
-    width: max-content;
-    position: relative;
-    visibility: hidden;
-    animation: cmd-visible 0.5s linear 1.7s forwards;
-
-    &::before,
-    &::after {
-      content: "";
-      position: absolute;
-      left: 1rem;
-      top: 0;
-      right: 0;
-      bottom: 0;
+    & > * {
+        font-size: var(--fs-3);
+        font-weight: 700;
     }
+    justify-self: start;
+    margin-block-end: calc(var(--spacing) * 0.5);
 
-    &::before {
-      background-color: hsl(var(--bgc));
-      animation: typewriter var(--timer) steps(var(--steps)) 1.7s forwards;
-    }
+    &-title {
+        --timer: calc((var(--steps) / 2) * 0.4s);
+        width: max-content;
+        position: relative;
+        visibility: hidden;
+        animation: cmd-visible 0.5s linear 1.7s forwards;
 
-    &::after {
-      content: "";
-      width: 1rem;
-      background-color: hsl(var(--txtc));
-      animation: typewriter var(--timer) steps(var(--steps)) 1.7s forwards,
-        caret-blink 0.9s calc(var(--timer) + 1.7s) infinite;
+        &::before,
+        &::after {
+            content: "";
+            position: absolute;
+            left: 1rem;
+            top: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        &::before {
+            background-color: hsl(var(--bgc));
+            animation: typewriter var(--timer) steps(var(--steps)) 1.7s forwards;
+        }
+
+        &::after {
+            content: "";
+            width: 1rem;
+            background-color: hsl(var(--txtc));
+            animation: typewriter var(--timer) steps(var(--steps)) 1.7s forwards,
+                caret-blink 0.9s calc(var(--timer) + 1.7s) infinite;
+        }
     }
-  }
 }
 
 .ter-fail {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-
-  & > span {
+    display: flex;
+    flex-direction: column;
     position: relative;
-    width: max-content;
 
-    &::before,
-    &::after {
-      content: "";
-      position: absolute;
-      left: 1rem;
-      top: 0;
-      right: 0;
-      bottom: 0;
+    & > span {
+        position: relative;
+        width: max-content;
+
+        &::before,
+        &::after {
+            content: "";
+            position: absolute;
+            left: 1rem;
+            top: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        &::before {
+            background-color: hsl(var(--bgc));
+            animation: typewriter 0.5s steps(1) forwards;
+        }
+
+        &::after {
+            width: 1rem;
+            background-color: hsl(var(--txtc));
+        }
     }
 
-    &::before {
-      background-color: hsl(var(--bgc));
-      animation: typewriter 0.5s steps(1) forwards;
+    & > span:nth-child(1) {
+        &::after {
+            visibility: visible;
+            animation: typewriter 0.5s steps(1) forwards,
+                cmd-invisible 0.1s linear 0.5s forwards;
+        }
     }
 
-    &::after {
-      width: 1rem;
-      background-color: hsl(var(--txtc));
-    }
-  }
+    & > span:nth-child(2) {
+        visibility: hidden;
+        animation: cmd-visible 0.5s steps(1) 0.5s forwards;
 
-  & > span:nth-child(1) {
-    &::after {
-      visibility: visible;
-      animation: typewriter 0.5s steps(1) forwards,
-        cmd-invisible 0.1s linear 0.5s forwards;
-    }
-  }
+        &::before {
+            background-color: hsl(var(--bgc));
+            animation: typewriter 0.5s steps(1) 1s forwards;
+        }
 
-  & > span:nth-child(2) {
-    visibility: hidden;
-    animation: cmd-visible 0.5s steps(1) 0.5s forwards;
-
-    &::before {
-      background-color: hsl(var(--bgc));
-      animation: typewriter 0.5s steps(1) 1s forwards;
+        &::after {
+            animation: typewriter 0.5s steps(1) 1s forwards,
+                cmd-invisible 0.1s linear 1.5s forwards;
+        }
     }
-
-    &::after {
-      animation: typewriter 0.5s steps(1) 1s forwards,
-        cmd-invisible 0.1s linear 1.5s forwards;
-    }
-  }
 }
 
 @keyframes cmd-invisible {
-  to {
-    visibility: hidden;
-  }
+    to {
+        visibility: hidden;
+    }
 }
 
 @keyframes cmd-visible {
-  to {
-    visibility: visible;
-  }
+    to {
+        visibility: visible;
+    }
 }
 
 @keyframes typewriter {
-  to {
-    left: 100%;
-  }
+    to {
+        left: 100%;
+    }
 }
 
 @keyframes caret-blink {
-  to {
-    background-color: transparent;
-  }
+    to {
+        background-color: transparent;
+    }
 }

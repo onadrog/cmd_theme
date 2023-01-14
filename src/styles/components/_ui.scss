@@ -2,119 +2,128 @@
 @use "sass:color";
 
 .btn {
-  cursor: pointer;
-  padding: 1em 1.6em;
-  border-radius: 100vmax;
-  font-family: "HackBold";
-  width: max-content;
+    cursor: pointer;
+    padding: 1em 1.6em;
+    border-radius: 100vmax;
+    font-family: "HackBold";
+    width: max-content;
 }
 
 .tag {
-  padding: 0.3em;
-  border-radius: 0.3em;
-  color: hsl(var(--neutral));
-  font-weight: bold;
+    padding: 0.3em;
+    border-radius: 0.3em;
+    color: hsl(var(--neutral));
+    font-weight: bold;
 }
 
 @include btn("primary") {
-  background-color: hsl(var(--neutral));
-  color: hsl(var(--accent));
-  &:hover,
-  &:focus-visible {
-    background-color: hsl(var(--neutral-lighten));
-    box-shadow: 0 1px 0.2em 0 hsl(var(--bgc));
-  }
+    background-color: hsl(var(--neutral));
+    color: hsl(var(--accent));
+    &:hover,
+    &:focus-visible {
+        background-color: hsl(var(--neutral-lighten));
+        box-shadow: 0 1px 0.2em 0 hsl(var(--bgc));
+    }
 }
 
 @include tag("link") {
-  background-color: hsl(var(--accent));
-  cursor: pointer;
-  &:hover,
-  &:focus-visible {
-    background-color: color.hwb(39.7 38.7% 85.3% / 0.3);
-  }
+    background-color: hsl(var(--accent));
+    cursor: pointer;
+    &:hover,
+    &:focus-visible {
+        background-color: color.hwb(39.7 38.7% 85.3% / 0.3);
+    }
 }
 
 .term {
-  position: relative;
-  background-color: hsl(231.4, 14.9%, 18.4%);
-  padding-block-start: 1.6rem;
-  &::before {
-    content: "";
-    position: absolute;
-    height: 1.3rem;
-    left: 0;
-    top: 0;
-    width: 100%;
-    background-color: hsl(221.7, 16.3%, 27.6%, 0.3);
-  }
+    position: relative;
+    background-color: hsl(231.4, 14.9%, 18.4%);
+    padding-block-start: 1.6rem;
+    &::before {
+        content: "";
+        position: absolute;
+        height: 1.3rem;
+        left: 0;
+        top: 0;
+        width: 100%;
+        background-color: hsl(221.7, 16.3%, 27.6%, 0.3);
+    }
 
-  &::after {
-    content: "";
-    width: 2.1rem;
-    position: absolute;
-    height: 0.6rem;
-    right: 6px;
-    top: 6px;
-    background: radial-gradient(
-          farthest-side,
-          hsl(var(--red)) 100%,
-          transparent
-        )
-        top right/ 0.6rem,
-      0.6rem,
-      radial-gradient(farthest-side, hsl(var(--green)) 100%, transparent)
-        center/ 0.6rem,
-      0.6rem,
-      radial-gradient(farthest-side, hsl(var(--yellow)) 100%, transparent) left /
-        0.6rem,
-      0.6rem;
-    background-repeat: no-repeat;
-  }
+    &::after {
+        content: "";
+        width: 2.1rem;
+        position: absolute;
+        height: 0.6rem;
+        right: 6px;
+        top: 6px;
+        background: radial-gradient(
+                    farthest-side,
+                    hsl(var(--red)) 100%,
+                    transparent
+                )
+                top right/ 0.6rem,
+            0.6rem,
+            radial-gradient(farthest-side, hsl(var(--green)) 100%, transparent)
+                center/ 0.6rem,
+            0.6rem,
+            radial-gradient(farthest-side, hsl(var(--yellow)) 100%, transparent)
+                left / 0.6rem,
+            0.6rem;
+        background-repeat: no-repeat;
+    }
 }
 
 .switcher-wrapper {
-  padding: 0.5em 1em;
-  border-radius: 100vmax;
-  display: flex;
-  justify-content: space-around;
-  gap: 0.3em;
-  background-color: hsl(var(--bgc-darker), 0.6);
-  align-items: center;
-  input {
-    position: absolute;
-    margin: 0;
-    inset: 0;
-    z-index: -2;
-    cursor: pointer;
-    appearance: none;
-  }
-  label {
-    position: relative;
-    isolation: isolate;
-  }
-  button {
-    border: 0;
-    background: transparent;
-    color: inherit;
-    cursor: pointer;
-  }
+    padding: 0.5em 1em;
+    border-radius: 100vmax;
+    display: flex;
+    justify-content: space-around;
+    gap: 0.3em;
+    background-color: hsl(var(--bgc-darker), 0.6);
+    align-items: center;
+    input {
+        position: absolute;
+        margin: 0;
+        inset: 0;
+        z-index: -2;
+        cursor: pointer;
+        appearance: none;
+    }
+    label {
+        position: relative;
+        isolation: isolate;
+    }
+    button {
+        border: 0;
+        background: transparent;
+        color: inherit;
+        cursor: pointer;
+    }
 }
 
 // crt effect
 .crt {
-  position: relative;
+    position: relative;
 }
 
 .crt::before {
-  content: " ";
-  display: block;
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 5;
-  background: linear-gradient(transparent 15%, black, transparent 85%),
-    linear-gradient(90deg, black 1%, red, black, green, black, blue, black 99%);
-  background-size: 100% 3px, 12px 100%;
-  opacity: var(--intensity, 0.1);
+    content: " ";
+    display: block;
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 5;
+    background: linear-gradient(transparent 15%, black, transparent 85%),
+        linear-gradient(
+            90deg,
+            black 1%,
+            red,
+            black,
+            green,
+            black,
+            blue,
+            black 99%
+        );
+    background-size: 100% 3px, 12px 100%;
+    opacity: var(--intensity, 0.1);
 }

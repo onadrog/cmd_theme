@@ -4,15 +4,15 @@ A theme for astro.
 
 ## Feat
 
-- Use Sass
-- Blog post pagination
-- Semantic / A11y ready
+-   Use Sass
+-   Blog post pagination
+-   Semantic / A11y ready
 
 ## Usage
 
 ### requirements
 
-- [Pnpm](https://pnpm.io/https://pnpm.io/)
+-   [Pnpm](https://pnpm.io/https://pnpm.io/)
 
 ```bash
 $ pnpm run dev # run the dev env

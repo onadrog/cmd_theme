@@ -8,25 +8,25 @@ import image from "@astrojs/image";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "http://localhost:3000",
-  markdown: {
-    shikiConfig: {
-      theme: "dracula",
-      wrap: true,
+    site: "http://localhost:3000",
+    markdown: {
+        shikiConfig: {
+            theme: "dracula",
+            wrap: true,
+        },
     },
-  },
-  integrations: [
-    sitemap(),
-    image({
-      serviceEntryPoint: "@astrojs/image/sharp",
-    }),
-    compress({
-      css: false,
-      html: true,
-      img: false,
-      js: false,
-      svg: false,
-    }),
-    prefetch(),
-  ],
+    integrations: [
+        sitemap(),
+        image({
+            serviceEntryPoint: "@astrojs/image/sharp",
+        }),
+        compress({
+            css: false,
+            html: true,
+            img: false,
+            js: false,
+            svg: false,
+        }),
+        prefetch(),
+    ],
 });

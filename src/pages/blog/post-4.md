@@ -5,8 +5,8 @@ author: Astro Learner
 description: "This post will show up on its own!"
 pubDate: 2022-08-08
 image:
-  url: "../assets/ascii.png"
-  alt: ""
+    url: "../assets/ascii.png"
+    alt: ""
 tags: ["astro", "successes"]
 ---
 
