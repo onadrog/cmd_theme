@@ -10,7 +10,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "build:prev": "astro build && astro preview",
-    "format": "prettier -w ."
+    "format": "prettier -w --plugin-search-dir=. ."
   },
   "devDependencies": {
     "@astrojs/image": "^0.12.1",
@@ -22,6 +22,7 @@
     "astro-icon": "^0.8.0",
     "autoprefixer": "^10.4.13",
     "prettier": "^2.8.3",
+    "prettier-plugin-astro": "^0.7.2",
     "sass": "^1.57.1",
     "sharp": "^0.31.3",
     "simple-astro-seo": "^0.1.3",

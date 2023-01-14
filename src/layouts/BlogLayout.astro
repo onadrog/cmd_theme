@@ -3,22 +3,25 @@ import Footer from "../components/Footer.astro";
 import Head from "../components/Head.astro";
 import Navigation from "../components/Navigation.astro";
 import { site } from "../data/site";
-const { frontmatter: {title, description}, className="container" } = Astro.props;
+const {
+  frontmatter: { title, description },
+  className = "container",
+} = Astro.props;
 ---
 
 <!DOCTYPE html>
 <html lang={site.lang}>
-    <head>
-        <Head title={title} description={description} />
-    </head>
-    <body>
-        <Navigation />
-        <header><h1>{title}</h1></header>
-        <main id="main" class={className}>
-            <article>
-                <slot />
-            </article>
-        </main>
-        <Footer />
-    </body>
+  <head>
+    <Head title={title} description={description} />
+  </head>
+  <body>
+    <Navigation />
+    <header><h1>{title}</h1></header>
+    <main id="main" class={className}>
+      <article>
+        <slot />
+      </article>
+    </main>
+    <Footer />
+  </body>
 </html>

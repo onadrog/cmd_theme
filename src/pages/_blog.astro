@@ -2,40 +2,40 @@
 import Card from "../components/Card.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 const PageTitle = "Blog";
-const desc = "liste des posts"
+const desc = "liste des posts";
 const allPosts = await Astro.glob("./blog/*.md");
 const tags = [...new Set(allPosts.map((p) => p.frontmatter.tags).flat())];
 ---
 
-<BaseLayout title={PageTitle} description={desc} >
-    <aside class="sidebar" slot="aside">
-        <section>
-            <header>
-                <h2>Tags</h2>
-            </header>
-            <ul>
-                {
-                    tags.map((t) => (
-                        <li>
-                            <a href={`/tags/${t}`}>{t}</a>
-                        </li>
-                    ))
-                }
-            </ul>
-        </section>
-    </aside>
-    <Fragment slot="main">
+<BaseLayout title={PageTitle} description={desc}>
+  <aside class="sidebar" slot="aside">
+    <section>
+      <header>
+        <h2>Tags</h2>
+      </header>
+      <ul>
         {
-            allPosts.map((p) => (
-                <Card
-                    title={p.frontmatter.title}
-                    pubDate={p.frontmatter.pubDate}
-                    description={p.frontmatter.description}
-                    url={p.url as string}
-                    image={p.frontmatter.image}
-                    tags={p.frontmatter.tags}
-                />
-            ))
-        }</Fragment
-    >
+          tags.map((t) => (
+            <li>
+              <a href={`/tags/${t}`}>{t}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+  </aside>
+  <Fragment slot="main">
+    {
+      allPosts.map((p) => (
+        <Card
+          title={p.frontmatter.title}
+          pubDate={p.frontmatter.pubDate}
+          description={p.frontmatter.description}
+          url={p.url as string}
+          image={p.frontmatter.image}
+          tags={p.frontmatter.tags}
+        />
+      ))
+    }
+  </Fragment>
 </BaseLayout>

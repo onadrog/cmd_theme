@@ -3,65 +3,63 @@ import { Icon } from "astro-icon";
 ---
 
 <crt-switcher class="switcher-wrapper" aria-label="Toggle CRT screen effect.">
-    <button
-        type="button"
-        data-action="aria-switch"
-        aria-label="Toggle CRT screen effect."
-        aria-checked="false"
-        role="switch"
-    >
-        <Icon name="computer" size={18} aria-hidden="true" />
-    </button>
+  <button
+    type="button"
+    data-action="aria-switch"
+    aria-label="Toggle CRT screen effect."
+    aria-checked="false"
+    role="switch"
+  >
+    <Icon name="computer" size={18} aria-hidden="true" />
+  </button>
 </crt-switcher>
 
 <script>
-    class CrtSwitcher extends HTMLElement {
-        root: DOMTokenList;
-        svgPath: SVGPathElement;
-        button: HTMLButtonElement;
-        fill: string;
-        constructor() {
-            super();
-            this.root = document.documentElement.classList;
-            this.button = this.querySelector("button") as HTMLButtonElement;
-            this.svgPath = this.querySelector(
-                "svg > path.crt-screen"
-            ) as SVGPathElement;
-            this.fill = "none";
-        }
-
-        connectedCallback() {
-            this.getSessionStorage();
-            this.button.addEventListener("click", () => this.handleToggle());
-        }
-
-        getSessionStorage(): void {
-            if (sessionStorage.getItem("fill")) {
-                this.fill = sessionStorage.getItem("fill") as string;
-            }
-            this.changeEffect();
-        }
-
-        private handleToggle() {
-            const session = sessionStorage.getItem("fill");
-            session === "none"
-                ? (this.fill = "currentColor")
-                : (this.fill = "none");
-            this.changeEffect();
-        }
-
-        private changeEffect() {
-            if (this.fill === "none") {
-                this.button.ariaChecked = "false";
-                this.root.remove("crt");
-            } else {
-                this.root.add("crt");
-                this.button.ariaChecked = "true";
-            }
-            sessionStorage.setItem("fill", this.fill);
-            this.svgPath.setAttribute("fill", this.fill);
-        }
+  class CrtSwitcher extends HTMLElement {
+    root: DOMTokenList;
+    svgPath: SVGPathElement;
+    button: HTMLButtonElement;
+    fill: string;
+    constructor() {
+      super();
+      this.root = document.documentElement.classList;
+      this.button = this.querySelector("button") as HTMLButtonElement;
+      this.svgPath = this.querySelector(
+        "svg > path.crt-screen"
+      ) as SVGPathElement;
+      this.fill = "none";
     }
 
-    customElements.define("crt-switcher", CrtSwitcher);
+    connectedCallback() {
+      this.getSessionStorage();
+      this.button.addEventListener("click", () => this.handleToggle());
+    }
+
+    getSessionStorage(): void {
+      if (sessionStorage.getItem("fill")) {
+        this.fill = sessionStorage.getItem("fill") as string;
+      }
+      this.changeEffect();
+    }
+
+    private handleToggle() {
+      const session = sessionStorage.getItem("fill");
+      session === "none" ? (this.fill = "currentColor") : (this.fill = "none");
+      this.changeEffect();
+    }
+
+    private changeEffect() {
+      if (this.fill === "none") {
+        this.button.ariaChecked = "false";
+        this.root.remove("crt");
+      } else {
+        this.root.add("crt");
+        this.button.ariaChecked = "true";
+      }
+      sessionStorage.setItem("fill", this.fill);
+      this.svgPath.setAttribute("fill", this.fill);
+    }
+  }
+
+  customElements.define("crt-switcher", CrtSwitcher);
 </script>

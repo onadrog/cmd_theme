@@ -6,41 +6,45 @@ import { site } from "../data/site";
 import { resolveLocalImage } from "../utils/getImages";
 
 let { image, title, url, description, tags, pubDate } =
-    Astro.props as Frontmatter;
+  Astro.props as Frontmatter;
 image ? image : (image = { url: "../assets/code.png", alt: "" });
 const resolvedImage = await resolveLocalImage(image.url, image.alt);
 ---
 
 <article class="card">
-    <h3 class="card-title">{title}</h3>
-    <Picture
-        src={resolvedImage}
-        widths={[200, 300]}
-        sizes="(max-width: 40em) 80vw, 300px"
-        aspectRatio={1 / 1.6}
-        alt=""
-        class="card-img"
-    />
-    <p class="card-pubDate">
-        <time datetime={pubDate}
-            >{
-                new Date(pubDate).toLocaleString(site.lang, {
-                    dateStyle: "medium",
-                })
-            }</time
-        >
-    </p>
-    <div class="card-content">
-        <p class="card-content--description">{description}...</p>
-        <a class="card-content--link btn-primary" aria-label={`Read more about ${title}`} href={url}>Read more</a>
-        <ul class="card-content--tags-list">
-            {
-                tags.map((t) => (
-                    <li class="card-content--link tag-link">
-                        <a href={`/tag/${t}`}>#{t}</a>
-                    </li>
-                ))
-            }
-        </ul>
-    </div>
+  <h3 class="card-title">{title}</h3>
+  <Picture
+    src={resolvedImage}
+    widths={[200, 300]}
+    sizes="(max-width: 40em) 80vw, 300px"
+    aspectRatio={1 / 1.6}
+    alt=""
+    class="card-img"
+  />
+  <p class="card-pubDate">
+    <time datetime={pubDate}
+      >{
+        new Date(pubDate).toLocaleString(site.lang, {
+          dateStyle: "medium",
+        })
+      }</time
+    >
+  </p>
+  <div class="card-content">
+    <p class="card-content--description">{description}...</p>
+    <a
+      class="card-content--link btn-primary"
+      aria-label={`Read more about ${title}`}
+      href={url}>Read more</a
+    >
+    <ul class="card-content--tags-list">
+      {
+        tags.map((t) => (
+          <li class="card-content--link tag-link">
+            <a href={`/tag/${t}`}>#{t}</a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
 </article>

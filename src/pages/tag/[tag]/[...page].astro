@@ -5,60 +5,60 @@ import type { Frontmatter } from "../../../utils/types/frontmatter";
 import type { GetStaticPathsOptions } from "astro";
 
 export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
-	const allPosts = await Astro.glob("../../blog/*.md");
-	const uniqueTag = [
-		...new Set(allPosts.map((p) => p.frontmatter.tags).flat()),
-	];
-	return uniqueTag.map((tag) => {
-		const filtered = allPosts.filter((p) => p.frontmatter.tags.includes(tag));
-		return paginate(filtered, {
-			params: { tag },
-			pageSize: 9,
-		});
-	});
+  const allPosts = await Astro.glob("../../blog/*.md");
+  const uniqueTag = [
+    ...new Set(allPosts.map((p) => p.frontmatter.tags).flat()),
+  ];
+  return uniqueTag.map((tag) => {
+    const filtered = allPosts.filter((p) => p.frontmatter.tags.includes(tag));
+    return paginate(filtered, {
+      params: { tag },
+      pageSize: 9,
+    });
+  });
 }
 const { tag } = Astro.params;
 const { page } = Astro.props;
 ---
 
 <BaseLayout
-	title={`tag/${tag}`}
-	description={`Tous les post de blog concernant le tag ${tag}`}
-	className={"grid"}
-	canonicalURL={`tag/${tag}`}
+  title={`tag/${tag}`}
+  description={`Tous les post de blog concernant le tag ${tag}`}
+  className={"grid"}
+  canonicalURL={`tag/${tag}`}
 >
-	<Fragment slot="main">
-		{
-			page.data.map(
-				({ frontmatter, url }: { frontmatter: Frontmatter; url: string }) => (
-					<Card
-						title={frontmatter.title}
-						pubDate={frontmatter.pubDate}
-						description={frontmatter.description}
-						url={url}
-						image={frontmatter.image}
-						tags={frontmatter.tags}
-					/>
-				)
-			)
-		}
-		{
-			page.lastPage > 1 && (
-				<nav aria-label="pagination" class="nav-paginate">
-					<ul>
-						{page.url.prev ? (
-							<li class="btn">
-								<a href={page.url.prev}>Previous</a>
-							</li>
-						) : null}
-						{page.url.next ? (
-							<li class="btn">
-								<a href={page.url.next}>Next</a>
-							</li>
-						) : null}
-					</ul>
-				</nav>
-			)
-		}
-	</Fragment>
+  <Fragment slot="main">
+    {
+      page.data.map(
+        ({ frontmatter, url }: { frontmatter: Frontmatter; url: string }) => (
+          <Card
+            title={frontmatter.title}
+            pubDate={frontmatter.pubDate}
+            description={frontmatter.description}
+            url={url}
+            image={frontmatter.image}
+            tags={frontmatter.tags}
+          />
+        )
+      )
+    }
+    {
+      page.lastPage > 1 && (
+        <nav aria-label="pagination" class="nav-paginate">
+          <ul>
+            {page.url.prev ? (
+              <li class="btn">
+                <a href={page.url.prev}>Previous</a>
+              </li>
+            ) : null}
+            {page.url.next ? (
+              <li class="btn">
+                <a href={page.url.next}>Next</a>
+              </li>
+            ) : null}
+          </ul>
+        </nav>
+      )
+    }
+  </Fragment>
 </BaseLayout>

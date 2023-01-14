@@ -1,6 +1,6 @@
 ---
 export interface Props extends headProps {
-    className?: string;
+  className?: string;
 }
 
 import Navigation from "../components/Navigation.astro";
@@ -14,18 +14,18 @@ const { className = "container", ...head } = Astro.props;
 
 <!DOCTYPE html>
 <html lang={site.lang}>
-    <head>
-        <Head {...head} />
-    </head>
-    <body>
-        <Navigation />
-        <slot name="header">
-            <CmdHeader title={head.title} />
-        </slot>
-        <slot name="aside" />
-        <main class={className} id="main">
-            <slot name="main"><slot /></slot>
-        </main>
-        <Footer />
-    </body>
+  <head>
+    <Head {...head} />
+  </head>
+  <body>
+    <Navigation />
+    <slot name="header">
+      <CmdHeader title={head.title} />
+    </slot>
+    <slot name="aside" />
+    <main class={className} id="main">
+      <slot name="main"><slot /></slot>
+    </main>
+    <Footer />
+  </body>
 </html>

@@ -5,24 +5,23 @@ const desc = "The page does not exists";
 ---
 
 <BaseLayout title={"Page Not Found"} description={desc}>
-    <CmdHeader slot="header" cmd={""} title={"sudo rm -rf --no-preserve-root"} />
+  <CmdHeader slot="header" cmd={""} title={"sudo rm -rf --no-preserve-root"} />
 
-    <Fragment slot="main" aria-hidden="true">
-        <p class="main-404">
-            Oops!<br />Error 404 Not found<br /><small aria-hidden="true"
-                >Please <strong>NEVER</strong> write this command on a UNIX system
-                terminal!</small
-            >
-        </p>
-    </Fragment>
+  <Fragment slot="main" aria-hidden="true">
+    <p class="main-404">
+      Oops!<br />Error 404 Not found<br /><small aria-hidden="true"
+        >Please <strong>NEVER</strong> write this command on a UNIX system terminal!</small
+      >
+    </p>
+  </Fragment>
 </BaseLayout>
 
 <style lang="scss">
-    .main-404 {
-        text-align: center;
-        font-size: var(--fs-3);
-        & small {
-            font-size: var(--fs-0);
-        }
+  .main-404 {
+    text-align: center;
+    font-size: var(--fs-3);
+    & small {
+      font-size: var(--fs-0);
     }
+  }
 </style>

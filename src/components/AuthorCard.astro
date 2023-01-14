@@ -1,6 +1,6 @@
 ---
 export interface Props {
-    id: number;
+  id: number;
 }
 
 import Avatar from "./Avatar.astro";
@@ -10,85 +10,84 @@ const author = site.authors.filter((a) => a.id === id);
 ---
 
 {
-    author.map((a) => (
-        <article class="term card-author">
-            <header class="card-author--header">
-                <Avatar imageSrc={a.profilePic} />
-                <div class="card-author--list">
-                    <h3>
-                        {a.firstname}@{a.lastname}
-                    </h3>
-                    <ul aria-hidden="true">
-                        <li>
-                            <strong>OS:</strong>
-                            {` ${a.os}` || " OrchLinux"}
-                        </li>
-                        <li>
-                            <strong>Kernel:</strong> 6.0.19
-                        </li>
-                        <li>
-                            <strong>Shell:</strong>
-                            {` ${a.shell}` || " bash"}
-                        </li>
-                        <li>
-                            <strong>Theme:</strong> cmd_theme
-                        </li>
-                    </ul>
-                    <ul>
-                        {a.socials.map((s) => (
-                            <li>
-                                <strong>{s.name}: </strong>
-                                <a
-                                    href={s.link}
-                                    rel="nofollow noreferrer"
-                                    target="_blank"
-                                >
-                                    {s.link}
-                                </a>
-                            </li>
-                        ))}
-                        <span aria-hidden="true" class="tilted">~</span>
-                    </ul>
-                </div>
-            </header>
-            <p class="card-author--content">{a.bio}</p>
-        </article>
-    ))
+  author.map((a) => (
+    <article class="term card-author">
+      <header class="card-author--header">
+        <Avatar imageSrc={a.profilePic} />
+        <div class="card-author--list">
+          <h3>
+            {a.firstname}@{a.lastname}
+          </h3>
+          <ul aria-hidden="true">
+            <li>
+              <strong>OS:</strong>
+              {` ${a.os}` || " OrchLinux"}
+            </li>
+            <li>
+              <strong>Kernel:</strong> 6.0.19
+            </li>
+            <li>
+              <strong>Shell:</strong>
+              {` ${a.shell}` || " bash"}
+            </li>
+            <li>
+              <strong>Theme:</strong> cmd_theme
+            </li>
+          </ul>
+          <ul>
+            {a.socials.map((s) => (
+              <li>
+                <strong>{s.name}: </strong>
+                <a href={s.link} rel="nofollow noreferrer" target="_blank">
+                  {s.link}
+                </a>
+              </li>
+            ))}
+            <span aria-hidden="true" class="tilted">
+              ~
+            </span>
+          </ul>
+        </div>
+      </header>
+      <p class="card-author--content">{a.bio}</p>
+    </article>
+  ))
 }
 
 <style lang="scss">
-    article {
-        padding: 1em;
-        max-width: 69ch;
-        min-width: 40ch;
-        overflow: hidden;
-        border-radius: 0.5em;
-        text-align: start;
-        margin: 0 auto;
-        color: hsl(37.2, 38.7%, 85.3%);
-        font-weight: 700;
+  article {
+    padding: 1em;
+    max-width: 69ch;
+    min-width: 40ch;
+    overflow: hidden;
+    border-radius: 0.5em;
+    text-align: start;
+    margin: 0 auto;
+    color: hsl(37.2, 38.7%, 85.3%);
+    font-weight: 700;
+  }
+  header {
+    display: grid;
+    grid-template-areas:
+      "avatar spec"
+      "avatar spec";
+    place-items: center;
+    h3,
+    strong {
+      color: hsl(var(--purple));
     }
-    header {
-        display: grid;
-        grid-template-areas:
-            "avatar spec"
-            "avatar spec";
-        place-items: center;
-            h3 , strong {
-                color: hsl(var(--purple));
-            }
-        strong{
-            font-family: "HackBold";
-        }
-        & picture {
-            grid-area: avatar;
-        }
-        div {
-            grid-area: spec;
-            margin-block-start: 1.6em;
-        }
-        .tilted {
-            color: hsl(var(--green));
-        }
+    strong {
+      font-family: "HackBold";
     }
+    & picture {
+      grid-area: avatar;
+    }
+    div {
+      grid-area: spec;
+      margin-block-start: 1.6em;
+    }
+    .tilted {
+      color: hsl(var(--green));
+    }
+  }
 </style>
