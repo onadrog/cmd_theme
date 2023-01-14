@@ -1,32 +1,35 @@
 ---
-interface Props {
-    page: Page;
-}
-
-import type { Page } from "astro";
-import type { Frontmatter } from "../../utils/types/frontmatter";
-import Card from "../../components/Card.astro";
-import BaseLayout from "../../layouts/BaseLayout.astro";
+import Card from "../../../components/Card.astro";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import type { Frontmatter } from "../../../utils/types/frontmatter";
 import type { GetStaticPathsOptions } from "astro";
 
 export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
-    const allPosts = await Astro.glob("./*.md");
-    const posts = allPosts.filter((post) => !post.frontmatter.draft);
-    return paginate(posts, { pageSize: 9 });
+    const allPosts = await Astro.glob("../../blog/*.md");
+    const uniqueTag = [
+        ...new Set(allPosts.map((p) => p.frontmatter.tags).flat()),
+    ];
+    return uniqueTag.map((tag) => {
+        const filtered = allPosts.filter((p) =>
+            p.frontmatter.tags.includes(tag)
+        );
+        return paginate(filtered, {
+            params: { tag },
+            pageSize: 9,
+        });
+    });
 }
+const { tag } = Astro.params;
 const { page } = Astro.props;
-const PageTitle = "Blog";
-const desc = "liste des posts";
 ---
 
 <BaseLayout
-    title={PageTitle}
-    description={desc}
-    canonicalURL={"blog"}
+    title={`tag/${tag}`}
+    description={`Tous les post de blog concernant le tag ${tag}`}
     className={"grid"}
+    canonicalURL={`tag/${tag}`}
 >
     <Fragment slot="main">
-        <h2 class="sr-only">List of blog posts</h2>
         {
             page.data.map(
                 ({

@@ -9,6 +9,8 @@ specifiers:
   astro-compress: 1.1.24
   astro-icon: ^0.8.0
   autoprefixer: ^10.4.13
+  prettier: ^2.8.3
+  prettier-plugin-astro: ^0.7.2
   sass: ^1.57.1
   sharp: ^0.31.3
   simple-astro-seo: ^0.1.3
@@ -23,6 +25,8 @@ devDependencies:
   astro-compress: 1.1.24
   astro-icon: 0.8.0
   autoprefixer: 10.4.13
+  prettier: 2.8.3
+  prettier-plugin-astro: 0.7.2
   sass: 1.57.1
   sharp: 0.31.3
   simple-astro-seo: 0.1.3
@@ -71,7 +75,7 @@ packages:
     dependencies:
       '@vscode/emmet-helper': 2.8.6
       events: 3.3.0
-      prettier: 2.8.1
+      prettier: 2.8.3
       prettier-plugin-astro: 0.7.2
       source-map: 0.7.4
       vscode-css-languageservice: 6.2.1
@@ -3162,13 +3166,13 @@ packages:
     engines: {node: ^14.15.0 || >=16.0.0, pnpm: '>=7.14.0'}
     dependencies:
       '@astrojs/compiler': 0.31.4
-      prettier: 2.8.1
+      prettier: 2.8.3
       sass-formatter: 0.7.5
       synckit: 0.8.4
     dev: true
 
-  /prettier/2.8.1:
-    resolution: {integrity: sha512-lqGoSJBQNJidqCHE80vqZJHWHRFoNYsSpP9AjFhlhi9ODCJA541svILes/+/1GM3VaL/abZi7cpFzOpdR9UPKg==}
+  /prettier/2.8.3:
+    resolution: {integrity: sha512-tJ/oJ4amDihPoufT5sM0Z1SKEuKay8LfVAMlbbhnnkvt6BUserZylqo2PN+p9KeljLr0OHa2rXHU1T8reeoTrw==}
     engines: {node: '>=10.13.0'}
     hasBin: true
     dev: true

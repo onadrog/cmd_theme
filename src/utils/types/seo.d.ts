@@ -1,1 +1,1 @@
-declare module 'simple-astro-seo'
+declare module "simple-astro-seo";

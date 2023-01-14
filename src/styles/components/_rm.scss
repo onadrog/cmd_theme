@@ -1,31 +1,32 @@
 .main {
-  text-align: center;
-  font-size: var(--fs-3);
+    text-align: center;
+    font-size: var(--fs-3);
 }
 
 .rm-rf {
-  position: relative;
-  justify-self: start;
-  margin-inline-start: 1rem;
-  margin-block-end: 1rem;
-  width: max-content;
-  font-size: var(--fs-2);
+    position: relative;
+    justify-self: start;
+    margin-inline-start: 1rem;
+    margin-block-end: 1rem;
+    width: max-content;
+    font-size: var(--fs-2);
 
-  &::before,
-  &::after {
-    content: "";
-    position: absolute;
-    background-color: var(--bgc);
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 1em;
-    animation: typewriter 9s steps(33) forwards;
-  }
+    &::before,
+    &::after {
+        content: "";
+        position: absolute;
+        background-color: var(--bgc);
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 1em;
+        animation: typewriter 9s steps(33) forwards;
+    }
 
-  &::after {
-    background-color: var(--txtc);
-    width: 1em;
-    animation: typewriter 9s steps(33) forwards, caret-blink 0.9s 9s infinite;
-  }
+    &::after {
+        background-color: var(--txtc);
+        width: 1em;
+        animation: typewriter 9s steps(33) forwards,
+            caret-blink 0.9s 9s infinite;
+    }
 }

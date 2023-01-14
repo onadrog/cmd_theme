@@ -2,7 +2,7 @@
 export interface Props {
     title: string;
     description: string;
-    canonicalURL?: string ;
+    canonicalURL?: string;
     pageType?: "article" | "website";
     img?: string | ImageMetadata;
 }
@@ -11,12 +11,12 @@ import { getImage } from "@astrojs/image";
 import SEO from "simple-astro-seo";
 import "../styles/base/_index.scss";
 import "../styles/components/_ui.scss";
-import {site} from "../data/site";
+import { site } from "../data/site";
 
 const {
     title = site.title,
     description = site.description,
-    canonicalURL =  new URL(Astro.url.pathname, Astro.site),
+    canonicalURL = new URL(Astro.url.pathname, Astro.site),
     img = site.image,
     pageType = "article",
 } = Astro.props;
@@ -26,7 +26,7 @@ const image = await getImage({
     width: 1080,
     aspectRatio: 2,
     format: "png",
-    alt: ""
+    alt: "",
 });
 
 const siteImg = new URL(image.src as string, Astro.url).toString();
@@ -38,7 +38,12 @@ const siteImg = new URL(image.src as string, Astro.url).toString();
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <link rel="alternate icon" type="image/x-icon" href="/favicon.ico" />
 <link rel="sitemap" href="/sitemap-index.xml" />
-<link rel="alternate" href={new URL("/rss.xml", Astro.site).toString()} type="application/rss+xml" title="My Website RSS feed">
+<link
+    rel="alternate"
+    href={new URL("/rss.xml", Astro.site).toString()}
+    type="application/rss+xml"
+    title="My Website RSS feed"
+/>
 <title>{title}</title>
 
 <SEO
@@ -46,7 +51,9 @@ const siteImg = new URL(image.src as string, Astro.url).toString();
     title={title}
     description={description}
     siteName={site.siteName}
-    url={typeof canonicalURL === "string" ? new URL(canonicalURL, Astro.site).toString() : canonicalURL.toString()}
+    url={typeof canonicalURL === "string"
+        ? new URL(canonicalURL, Astro.site).toString()
+        : canonicalURL.toString()}
     pageType={pageType}
     twitterHandle={site.twitterCreator}
 />

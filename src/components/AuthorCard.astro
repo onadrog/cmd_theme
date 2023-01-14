@@ -47,7 +47,9 @@ const author = site.authors.filter((a) => a.id === id);
                                 </a>
                             </li>
                         ))}
-                        <span aria-hidden="true" class="tilted">~</span>
+                        <span aria-hidden="true" class="tilted">
+                            ~
+                        </span>
                     </ul>
                 </div>
             </header>
@@ -74,10 +76,11 @@ const author = site.authors.filter((a) => a.id === id);
             "avatar spec"
             "avatar spec";
         place-items: center;
-            h3 , strong {
-                color: hsl(var(--purple));
-            }
-        strong{
+        h3,
+        strong {
+            color: hsl(var(--purple));
+        }
+        strong {
             font-family: "HackBold";
         }
         & picture {

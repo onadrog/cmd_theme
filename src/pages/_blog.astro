@@ -2,12 +2,12 @@
 import Card from "../components/Card.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 const PageTitle = "Blog";
-const desc = "liste des posts"
+const desc = "liste des posts";
 const allPosts = await Astro.glob("./blog/*.md");
 const tags = [...new Set(allPosts.map((p) => p.frontmatter.tags).flat())];
 ---
 
-<BaseLayout title={PageTitle} description={desc} >
+<BaseLayout title={PageTitle} description={desc}>
     <aside class="sidebar" slot="aside">
         <section>
             <header>
@@ -36,6 +36,6 @@ const tags = [...new Set(allPosts.map((p) => p.frontmatter.tags).flat())];
                     tags={p.frontmatter.tags}
                 />
             ))
-        }</Fragment
-    >
+        }
+    </Fragment>
 </BaseLayout>

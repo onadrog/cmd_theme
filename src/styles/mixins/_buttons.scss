@@ -1,4 +1,4 @@
-@mixin btn($suffix){
+@mixin btn($suffix) {
     .btn-#{$suffix} {
         @extend .btn;
         @content;

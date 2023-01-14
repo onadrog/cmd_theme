@@ -1,13 +1,13 @@
 @mixin font_face($family, $weight: 400, $format: "ttf", $style: normal) {
-  $type: #{$format};
-  @if $format == "ttf" {
-    $type: "truetype";
-  }
-  @font-face {
-    font-family: #{$family};
-    src: url(/fonts/#{$family}.#{$format}) format(#{$type});
-    font-weight: $weight;
-    font-display: swap;
-    font-style: $style;
-  }
+    $type: #{$format};
+    @if $format == "ttf" {
+        $type: "truetype";
+    }
+    @font-face {
+        font-family: #{$family};
+        src: url(/fonts/#{$family}.#{$format}) format(#{$type});
+        font-weight: $weight;
+        font-display: swap;
+        font-style: $style;
+    }
 }

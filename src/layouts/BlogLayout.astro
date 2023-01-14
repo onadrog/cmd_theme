@@ -3,7 +3,10 @@ import Footer from "../components/Footer.astro";
 import Head from "../components/Head.astro";
 import Navigation from "../components/Navigation.astro";
 import { site } from "../data/site";
-const { frontmatter: {title, description}, className="container" } = Astro.props;
+const {
+    frontmatter: { title, description },
+    className = "container",
+} = Astro.props;
 ---
 
 <!DOCTYPE html>
