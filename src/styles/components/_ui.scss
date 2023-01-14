@@ -93,6 +93,12 @@
     position: relative;
     isolation: isolate;
   }
+  button {
+    border: 0;
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+  }
 }
 
 // crt effect
@@ -106,14 +112,9 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
-<<<<<<< HEAD
-  z-index: 2;
-=======
   z-index: 5;
->>>>>>> d29d5b5 (Fix: more semantic refractoring.)
   background: linear-gradient(transparent 15%, black, transparent 85%),
     linear-gradient(90deg, black 1%, red, black, green, black, blue, black 99%);
-
   background-size: 100% 3px, 12px 100%;
   opacity: var(--intensity, 0.1);
 }
