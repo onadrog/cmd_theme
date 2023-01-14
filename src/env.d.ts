@@ -1,9 +1,9 @@
 /// <reference types="@astrojs/image/client" />
 
 interface ImportMetaEnv {
-    SITE: string
+  SITE: string;
 }
 
 interface ImportMeta {
-    readonly env: ImportMetaEnv
+  readonly env: ImportMetaEnv;
 }
