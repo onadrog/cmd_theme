@@ -60,13 +60,16 @@ body {
   position: absolute;
   top: -10rem;
   padding: 1rem;
-  border-radius: 1rem;
-  background-color: hsl(var(--bgc-darker));
-  color: hsl(var(--txtc));
+  background-color: hsl(var(--accent));
+  color: hsl(var(--neutral));
+  z-index: 2;
+  transition: 350ms ease;
+  text-align: center;
+  font-size: var(--fs-2);
+  text-transform: capitalize;
 
   &:focus {
     top: 0;
-    transition: top 350ms ease;
   }
 }
 

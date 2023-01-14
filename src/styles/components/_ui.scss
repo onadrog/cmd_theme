@@ -81,11 +81,17 @@
   gap: 0.3em;
   background-color: hsl(var(--bgc-darker), 0.6);
   align-items: center;
+  input {
+    position: absolute;
+    margin: 0;
+    inset: 0;
+    z-index: -2;
+    cursor: pointer;
+    appearance: none;
+  }
   label {
-    &:hover,
-    &:focus-visible {
-      cursor: pointer;
-    }
+    position: relative;
+    isolation: isolate;
   }
 }
 
@@ -100,7 +106,11 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
+<<<<<<< HEAD
   z-index: 2;
+=======
+  z-index: 5;
+>>>>>>> d29d5b5 (Fix: more semantic refractoring.)
   background: linear-gradient(transparent 15%, black, transparent 85%),
     linear-gradient(90deg, black 1%, red, black, green, black, blue, black 99%);
 

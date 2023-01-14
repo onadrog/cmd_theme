@@ -5,28 +5,14 @@ import { Icon } from "astro-icon";
 <theme-switcher id="themeToggle">
     <fieldset class="switcher-wrapper">
         <legend class="sr-only">Choose a scheme theme</legend>
-        <label for="light"
-            ><span class="sr-only">Light mode</span>
+        <label for="light" title="Use light mode">
             <Icon name="sun" size={18} aria-hidden="true" class="light" />
+            <input type="radio" id="light" name="theme-toggle" value="light" />
         </label>
-        <input
-            class="sr-only"
-            type="radio"
-            id="light"
-            name="theme-toggle"
-            value="light"
-        />
-        <label for="dark"
-            ><span class="sr-only">Dark mode</span>
+        <label for="dark" title="Use dark mode">
             <Icon name="moon" size={18} aria-hidden="true" class="dark" />
+            <input type="radio" id="dark" name="theme-toggle" value="dark" />
         </label>
-        <input
-            class="sr-only"
-            type="radio"
-            id="dark"
-            name="theme-toggle"
-            value="dark"
-        />
     </fieldset>
 </theme-switcher>
 
