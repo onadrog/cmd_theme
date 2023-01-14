@@ -99,14 +99,11 @@
   display: block;
   position: absolute;
   inset: 0;
-  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
-    linear-gradient(
-      90deg,
-      rgba(255, 0, 0, 0.06),
-      rgba(0, 255, 0, 0.06),
-      rgba(0, 0, 255, 0.06)
-    );
-  background-size: 100% 3px, 6px 100%;
   pointer-events: none;
   z-index: 2;
+  background: linear-gradient(transparent 15%, black, transparent 85%),
+    linear-gradient(90deg, black 1%, red, black, green, black, blue, black 99%);
+
+  background-size: 100% 3px, 12px 100%;
+  opacity: var(--intensity, 0.1);
 }

@@ -50,7 +50,7 @@
   &:hover,
   &:focus-within {
     box-shadow: 0 6px 9px 0 hsl(0deg 0% 69%);
-    scale: 1.01;
+    transform: scale(1.01);
     transition: 0.3s;
     background-color: hsl(var(--card-bg));
     &::before {
