@@ -2,6 +2,10 @@
 
 A theme for astro.
 
+![home page](_imgs/cmd_1.png)
+![blog posts list](_imgs/cmd_2.png)
+![about page](_imgs/cmd_3.png)
+
 ## Feat
 
 -   Use Sass
