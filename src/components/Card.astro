@@ -1,26 +1,16 @@
 ---
 import "../styles/components/_card.scss";
-import { Picture } from "@astrojs/image/components";
 import type { Frontmatter } from "../utils/types/frontmatter";
 import { site } from "../data/site";
-import { resolveLocalImage } from "../utils/getImages";
 
-let { image, title, url, description, tags, pubDate } =
-    Astro.props as Frontmatter;
-image ? image : (image = { url: "../assets/code.png", alt: "" });
-const resolvedImage = await resolveLocalImage(image.url, image.alt);
+let { title, url, description, tags, pubDate } = Astro.props as Frontmatter;
 ---
 
-<article class="card">
-    <h3 class="card-title">{title}</h3>
-    <Picture
-        src={resolvedImage}
-        widths={[200, 300]}
-        sizes="(max-width: 40em) 80vw, 300px"
-        aspectRatio={1 / 1.6}
-        alt=""
-        class="card-img"
-    />
+<article class="card term">
+    <a class="card-title" href={url}
+        ><h3>{title}</h3>
+        <span aria-hidden="true" class="card-link"></span>
+    </a>
     <p class="card-pubDate">
         <time datetime={pubDate}
             >{
@@ -29,22 +19,17 @@ const resolvedImage = await resolveLocalImage(image.url, image.alt);
                 })
             }</time
         >
-    </p>
-    <div class="card-content">
-        <p class="card-content--description">{description}...</p>
-        <a
-            class="card-content--link btn-primary"
-            aria-label={`Read more about ${title}`}
-            href={url}>Read more</a
-        >
-        <ul class="card-content--tags-list">
+        <p class="card-content">
+            {description}...
+        </p>
+        <ul class="card-tags">
             {
                 tags.map((t) => (
-                    <li class="card-content--link tag-link">
-                        <a href={`/tag/${t}`}>#{t}</a>
+                    <li class="card-tags-link tag-link">
+                        <a href={`/tag/${t}`}>{t}</a>
                     </li>
                 ))
             }
         </ul>
-    </div>
+    </p>
 </article>
