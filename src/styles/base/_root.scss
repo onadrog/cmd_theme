@@ -1,22 +1,7 @@
 @use "../mixins/" as *;
+@use "../themes/tokyonight";
 
 :root {
-    // colors
-    --bgc: 37.2, 38.7%, 85.3%;
-    --bgc-darker: 37.2, 38.7%, 75.3%;
-    --txtc: 216.7, 89.1%, 10.8%;
-    --accent: 179.4, 94.2%, 20.4%;
-    --neutral: 39.7, 43.5%, 65.3%;
-    --neutral-lighten: 39.7, 43.5%, 70.3%;
-    // --red: 14.4, 50.2%, 52.7%;
-    // --green: 87, 66.4%, 58%;
-    // --yellow: 53.3, 100%, 79%;
-    --red: 9.9, 100%, 75.1%;
-    --green: 115.3, 100%, 75.1%;
-    --yellow: 60, 100%, 75.1%;
-    --purple: 249.9, 100%, 75.1%;
-
-    --card-bg: transparent;
     // font size
     --fs--2: clamp(0.48rem, calc(0.53rem + -0.04vw), 0.52rem);
     --fs--1: clamp(0.6rem, calc(0.63rem + -0.03vw), 0.63rem);
@@ -34,24 +19,13 @@
 @include font_face("HackBold", $weight: 700, $format: "woff");
 @include font_face("HackRegular");
 @include font_face("HackRegular", $format: "woff");
-@media (prefers-color-scheme: dark) {
-    :root.dark {
-        --bgc: 216.7, 89.1%, 10.8%;
-        --bgc-darker: 216.7, 89.1%, 5.8%;
-        --txtc: 37.2, 38.7%, 85.3%;
-        --accent: 39.7, 43.5%, 65.3%;
-        --neutral: 179.4, 94.2%, 20.4%;
-        --neutral-lighten: 179.4, 94.2%, 25.4%;
-        --card-bg: 231.4, 14.9%, 18.4%;
-    }
-}
 
 body {
     font-size: var(--fs-0);
     display: grid;
     grid-template-rows: repeat(2, auto) 1fr auto;
     place-items: center;
-    background-color: hsl(var(--bgc));
+    background-color: hsl(var(--base));
     color: hsl(var(--txtc));
     font-family: "HackRegular", sans-serif;
 }
@@ -60,8 +34,8 @@ body {
     position: absolute;
     top: -10rem;
     padding: 1rem;
-    background-color: hsl(var(--accent));
-    color: hsl(var(--neutral));
+    background-color: hsl(var(--txtc));
+    color: hsl(var(--base));
     z-index: 2;
     transition: 350ms ease;
     text-align: center;
@@ -101,14 +75,14 @@ body {
 }
 
 .grid {
-    place-items: center;
+    // place-items: center;
     max-width: 80vw;
     display: grid;
     gap: 1rem;
     @media (min-width: 40em) {
-        grid-template-columns: repeat(auto-fit, 300px);
-        grid-template-rows: auto 1fr;
-        max-width: min(calc(900px + 3rem), 80vw);
+        grid-template-columns: repeat(auto-fit, 35ch);
+        grid-auto-rows: 1fr;
+        max-width: min(calc(35ch * 3 + 3rem), 80vw);
     }
 }
 
