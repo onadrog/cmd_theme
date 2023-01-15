@@ -1,115 +1,47 @@
 .card {
-    --pos: 0.3em;
-    --padding: 0.2em;
-
-    border-radius: 0.5rem;
-    max-width: 300px;
-    box-shadow: 0 3px 6px 0 hsl(0deg 0% 69%);
-    overflow: hidden;
     position: relative;
-    transition: 0.3s;
-
-    &-title {
+    border-radius: 0.5rem;
+    overflow: hidden;
+    padding: 0.3rem;
+    max-width: 35ch;
+    padding: 1.4rem;
+    display: grid;
+    grid-template-areas:
+        "title date"
+        "content content"
+        "tags tags";
+    &-link {
         position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: max-content;
-        background-color: hsl(0deg 0% 100% / 5%);
-        backdrop-filter: blur(16px);
-        border-radius: 0.2em;
-        padding: var(--padding);
+        inset: 0;
     }
-
+    &-title {
+        grid-area: title;
+        color: hsl(var(--accent));
+        font-family: "HackBold";
+    }
     &-pubDate {
-        position: absolute;
-        top: var(--pos);
-        right: var(--pos);
-        width: max-content;
-        padding: var(--padding);
-        background-color: hsl(0deg 0% 100% / 5%);
-        backdrop-filter: blur(16px);
-        border-radius: 0.2em;
+        grid-area: date;
+        color: hsl(var(--neutral));
+        font-size: 0.8rem;
+        justify-self: end;
     }
 
     &-content {
-        position: absolute;
-        display: flex;
-        flex-direction: column;
-        gap: 1em;
-        padding: 1em;
-        bottom: 1em;
-        clip-path: circle(0);
-        &--tags-list {
-            display: flex;
-            gap: 0.6rem;
-            flex-wrap: wrap;
-        }
+        grid-area: content;
+        padding-block: 1em;
+        text-align: center;
     }
-
-    &:hover,
-    &:focus-within {
-        box-shadow: 0 6px 9px 0 hsl(0deg 0% 69%);
-        transform: scale(1.01);
-        transition: 0.3s;
-        background-color: hsl(var(--card-bg));
-        &::before {
-            content: "";
-            position: absolute;
-            height: 1.3rem;
-            left: 0;
-            top: 0;
-            width: 100%;
-            background-color: hsla(221.7deg, 16.3%, 27.6%, 0.3);
-        }
-
-        &::after {
-            content: "";
-            width: 2.1rem;
-            position: absolute;
-            height: 0.6rem;
-            right: 6px;
-            top: 6px;
-            background: radial-gradient(
-                        farthest-side,
-                        hsl(var(--red)) 100%,
-                        transparent
-                    )
-                    top right/ 0.6rem,
-                0.6rem,
-                radial-gradient(
-                        farthest-side,
-                        hsl(var(--green)) 100%,
-                        transparent
-                    )
-                    center/ 0.6rem,
-                0.6rem,
-                radial-gradient(
-                        farthest-side,
-                        hsl(var(--yellow)) 100%,
-                        transparent
-                    )
-                    left / 0.6rem,
-                0.6rem;
-            background-repeat: no-repeat;
-        }
-        .card {
-            &-img {
-                visibility: hidden;
-            }
-            &-title {
-                background-color: transparent;
-                top: 3rem;
-                left: var(--pos);
-                transform: none;
-            }
-            &-pubDate {
-                top: 1.5rem;
-            }
-
-            &-content {
-                clip-path: unset;
-            }
+    &-tags {
+        grid-area: tags;
+        display: flex;
+        flex-flow: row;
+        gap: 0.3rem;
+        place-content: center;
+        flex-wrap: wrap;
+        &-link {
+            padding: 0.3rem 0.6rem;
+            position: relative;
+            border-radius: 0.3rem;
         }
     }
 }

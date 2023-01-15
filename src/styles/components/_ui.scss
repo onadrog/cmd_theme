@@ -22,16 +22,17 @@
     &:hover,
     &:focus-visible {
         background-color: hsl(var(--neutral-lighten));
-        box-shadow: 0 1px 0.2em 0 hsl(var(--bgc));
+        box-shadow: 0 1px 0.2em 0 hsl(var(--base));
     }
 }
-
 @include tag("link") {
-    background-color: hsl(var(--accent));
-    cursor: pointer;
+    color: hsl(var(--base-darker));
+    background-color: hsl(var(--accent-2));
+    font-weight: 700;
     &:hover,
     &:focus-visible {
-        background-color: color.hwb(39.7 38.7% 85.3% / 0.3);
+        color: hsl(var(--txtc));
+        background-color: hsl(var(--base-lighter));
     }
 }
 
@@ -79,7 +80,7 @@
     display: flex;
     justify-content: space-around;
     gap: 0.3em;
-    background-color: hsl(var(--bgc-darker), 0.6);
+    background-color: hsl(var(--base-darker), 0.6);
     align-items: center;
     input {
         position: absolute;
@@ -126,4 +127,41 @@
         );
     background-size: 100% 3px, 12px 100%;
     opacity: var(--intensity, 0.1);
+}
+.term {
+    position: relative;
+    background-color: hsl(var(--base-darker));
+    &::before,
+    &::after {
+        position: absolute;
+        content: "";
+
+        display: block;
+    }
+    &::before {
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: hsl(var(--base-lighter));
+        width: 100%;
+        height: 1.1rem;
+        opacity: 0.3;
+    }
+    &::after {
+        top: 0.3rem;
+        width: 2.6rem;
+        right: 0.6rem;
+        background: radial-gradient(
+                    farthest-side,
+                    hsl(var(--red)) 100%,
+                    transparent
+                )
+                top right/0.6rem,
+            radial-gradient(farthest-side, hsl(var(--green)) 100%, transparent)
+                top center/0.6rem,
+            radial-gradient(farthest-side, hsl(var(--yellow)) 100%, transparent)
+                top left/0.6rem;
+        background-repeat: no-repeat;
+        height: 0.6rem;
+    }
 }
