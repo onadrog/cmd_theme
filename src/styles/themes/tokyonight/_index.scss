@@ -12,15 +12,13 @@
     --accent-2: 261, 24%, 38%;
 }
 
-@media (prefers-color-scheme: dark) {
-    :root.dark {
-        --base: 230, 24%, 19%;
-        --base-lighter: 229, 24%, 33%;
-        --base-darker: 230, 24%, 17%;
-        --txtc: 32, 12%, 79%;
-        --accent: 189, 73%, 54%;
-        --accent-2: 261, 85%, 79%;
-        --neutral: 229, 35%, 65%;
-        --neutral-lighten: 179.4, 94.2%, 25.4%;
-    }
+:root.dark {
+    --base: 230, 24%, 19%;
+    --base-lighter: 229, 24%, 33%;
+    --base-darker: 230, 24%, 17%;
+    --txtc: 32, 12%, 79%;
+    --accent: 189, 73%, 54%;
+    --accent-2: 261, 85%, 79%;
+    --neutral: 229, 35%, 65%;
+    --neutral-lighten: 179.4, 94.2%, 25.4%;
 }
