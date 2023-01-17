@@ -2,28 +2,30 @@
 import { Icon } from "astro-icon";
 ---
 
-<crt-switcher class="switcher-wrapper" aria-label="Toggle CRT screen effect.">
-    <button
-        type="button"
-        data-action="aria-switch"
-        aria-label="Toggle CRT screen effect."
-        aria-checked="false"
-        role="switch"
-    >
+<crt-switcher
+    class="switcher-wrapper"
+>
+    <label for="crtSwicth">
         <Icon name="computer" size={18} aria-hidden="true" />
-    </button>
+        <input
+        title="Toggle CRT effect"
+            type="checkbox"
+            name="crtSwitch"
+            id="crtSwicth"
+        />
+    </label>
 </crt-switcher>
 
 <script>
     class CrtSwitcher extends HTMLElement {
         root: DOMTokenList;
         svgPath: SVGPathElement;
-        button: HTMLButtonElement;
+        input: HTMLInputElement;
         fill: string;
         constructor() {
             super();
             this.root = document.documentElement.classList;
-            this.button = this.querySelector("button") as HTMLButtonElement;
+            this.input = this.querySelector("input") as HTMLInputElement;
             this.svgPath = this.querySelector(
                 "svg > path.crt-screen"
             ) as SVGPathElement;
@@ -32,7 +34,10 @@ import { Icon } from "astro-icon";
 
         connectedCallback() {
             this.getSessionStorage();
-            this.button.addEventListener("click", () => this.handleToggle());
+            this.fill === "currentColor"
+                ? (this.input.checked = true)
+                : (this.input.checked = false);
+            this.input.addEventListener("change", (e) => this.handleToggle(e));
         }
 
         getSessionStorage(): void {
@@ -42,21 +47,21 @@ import { Icon } from "astro-icon";
             this.changeEffect();
         }
 
-        private handleToggle() {
-            const session = sessionStorage.getItem("fill");
-            session === "none"
-                ? (this.fill = "currentColor")
-                : (this.fill = "none");
+        private handleToggle(e: Event) {
+            const target = e.target as HTMLInputElement;
+            if (target.checked) {
+                this.fill = "currentColor";
+            } else {
+                this.fill = "none";
+            }
             this.changeEffect();
         }
 
         private changeEffect() {
             if (this.fill === "none") {
-                this.button.ariaChecked = "false";
                 this.root.remove("crt");
             } else {
                 this.root.add("crt");
-                this.button.ariaChecked = "true";
             }
             sessionStorage.setItem("fill", this.fill);
             this.svgPath.setAttribute("fill", this.fill);
