@@ -19,13 +19,8 @@ const PageTitle = "Blog";
 const desc = "liste des posts";
 ---
 
-<BaseLayout
-    title={PageTitle}
-    description={desc}
-    canonicalURL={"blog"}
-    className={"grid"}
->
-    <Fragment slot="main">
+<BaseLayout title={PageTitle} description={desc} canonicalURL={"blog"}>
+    <section slot="main" class="grid">
         <h2 class="sr-only">List of blog posts</h2>
         {
             page.data.map(
@@ -65,5 +60,5 @@ const desc = "liste des posts";
                 </nav>
             )
         }
-    </Fragment>
+    </section>
 </BaseLayout>
