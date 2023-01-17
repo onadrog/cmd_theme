@@ -26,6 +26,7 @@
     }
 }
 @include tag("link") {
+    transition: 0.3s;
     color: hsl(var(--base-darker));
     background-color: hsl(var(--accent-2));
     font-weight: 700;
@@ -164,4 +165,7 @@
         background-repeat: no-repeat;
         height: 0.6rem;
     }
+}
+.rounded {
+    border-radius: 100%;
 }
