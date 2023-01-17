@@ -4,6 +4,7 @@ import type { Frontmatter } from "../utils/types/frontmatter";
 import { site } from "../data/site";
 
 let { title, url, description, tags, pubDate } = Astro.props as Frontmatter;
+url = new URL(url, Astro.site).toString();
 ---
 
 <article class="card term">
@@ -19,17 +20,20 @@ let { title, url, description, tags, pubDate } = Astro.props as Frontmatter;
                 })
             }</time
         >
-        <p class="card-content">
-            {description}...
-        </p>
-        <ul class="card-tags">
-            {
-                tags.map((t) => (
-                    <li class="card-tags-link tag-link">
-                        <a href={`/tag/${t}`}>{t}</a>
-                    </li>
-                ))
-            }
-        </ul>
     </p>
+    <p class="card-content">
+        {description}...
+    </p>
+    <ul class="card-tags">
+        {
+            tags.map((t) => (
+                <li class="card-tags-link tag-link">
+                    <a href={`${new URL(`/tag/${t}`, Astro.site).toString()}`}>
+                        <span aria-hidden="true"># </span>
+                        {t}
+                    </a>
+                </li>
+            ))
+        }
+    </ul>
 </article>
