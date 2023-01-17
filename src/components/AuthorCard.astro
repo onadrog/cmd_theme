@@ -1,96 +1,55 @@
 ---
-export interface Props {
-    id: number;
-}
-
 import Avatar from "./Avatar.astro";
-const { id } = Astro.props;
+import "../styles/components/AuthorCard.scss";
 import { site } from "../data/site";
-const author = site.authors.filter((a) => a.id === id);
+const a = site.author;
 ---
 
-{
-    author.map((a) => (
-        <article class="term card-author">
-            <header class="card-author--header">
-                <Avatar imageSrc={a.profilePic} />
-                <div class="card-author--list">
-                    <h3>
-                        {a.firstname}@{a.lastname}
-                    </h3>
-                    <ul aria-hidden="true">
+<article class="term card-author">
+    <header class="card-author--header">
+        <Avatar imageSrc={a.profilePic} />
+        <div class="card-author--spec">
+            <h3 style={`--length: ${a.firstname.length}ch;`}>
+                {a.firstname}
+                {a.lastname}
+            </h3>
+            <ul aria-hidden="true">
+                <li style="color: hsl(var(--accent));">
+                    {"".padEnd(a.lastname.length + a.firstname.length + 3, "-")}
+                </li>
+                <li>
+                    <strong>OS:</strong>
+                    {` ${a.os}` || " OrchLinux"}
+                </li>
+                <li>
+                    <strong>Kernel:</strong> 6.0.19
+                </li>
+                <li>
+                    <strong>Shell:</strong>
+                    {` ${a.shell}` || " bash"}
+                </li>
+                <li>
+                    <strong>Theme:</strong> cmd_theme
+                </li>
+            </ul>
+            <ul>
+                {
+                    a.socials.map((s) => (
                         <li>
-                            <strong>OS:</strong>
-                            {` ${a.os}` || " OrchLinux"}
+                            <strong>{s.name}: </strong>
+                            <a
+                                href={s.link}
+                                rel="nofollow noreferrer"
+                                target="_blank"
+                            >
+                                {s.link}
+                            </a>
                         </li>
-                        <li>
-                            <strong>Kernel:</strong> 6.0.19
-                        </li>
-                        <li>
-                            <strong>Shell:</strong>
-                            {` ${a.shell}` || " bash"}
-                        </li>
-                        <li>
-                            <strong>Theme:</strong> cmd_theme
-                        </li>
-                    </ul>
-                    <ul>
-                        {a.socials.map((s) => (
-                            <li>
-                                <strong>{s.name}: </strong>
-                                <a
-                                    href={s.link}
-                                    rel="nofollow noreferrer"
-                                    target="_blank"
-                                >
-                                    {s.link}
-                                </a>
-                            </li>
-                        ))}
-                        <span aria-hidden="true" class="tilted">
-                            ~
-                        </span>
-                    </ul>
-                </div>
-            </header>
-            <p class="card-author--content">{a.bio}</p>
-        </article>
-    ))
-}
-
-<style lang="scss">
-    article {
-        padding: 1em;
-        max-width: 69ch;
-        min-width: 40ch;
-        overflow: hidden;
-        border-radius: 0.5em;
-        text-align: start;
-        margin: 0 auto;
-        font-weight: 700;
-    }
-    header {
-        display: grid;
-        grid-template-areas:
-            "avatar spec"
-            "avatar spec";
-        place-items: center;
-        h3,
-        strong {
-            color: hsl(var(--accent-2));
-        }
-        strong {
-            font-family: "HackBold";
-        }
-        & picture {
-            grid-area: avatar;
-        }
-        div {
-            grid-area: spec;
-            margin-block-start: 1.6em;
-        }
-        .tilted {
-            color: hsl(var(--accent));
-        }
-    }
-</style>
+                    ))
+                }
+                <li aria-hidden="true" class="tilted">~</li>
+            </ul>
+        </div>
+    </header>
+    <p class="card-author--content">{a.bio}</p>
+</article>

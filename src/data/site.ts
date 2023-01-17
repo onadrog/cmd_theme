@@ -6,7 +6,6 @@ import pic from "../assets/ascii.png";
 
 export interface Author {
     firstname: string;
-    id: number;
     bio: string;
     profilePic: ImageMetadata;
     os?: string;
@@ -28,7 +27,7 @@ export interface Site {
     description: string;
     image: ImageMetadata;
     twitterCreator: string;
-    authors: Author[];
+    author: Author;
 }
 
 export const site: Site = {
@@ -40,21 +39,18 @@ export const site: Site = {
         "This is my personal website, where I post news and some other cool stuff.",
     image: image,
     twitterCreator: "",
-    authors: [
-        {
-            id: 0,
-            os: "ArchLinux",
-            profilePic: pic,
-            shell: "Zsh",
-            bio: "I'm a web developer who loves making stuff and woodworking.",
-            firstname: "Sébastien",
-            lastname: "Gordano",
-            socials: [
-                {
-                    name: "github",
-                    link: "https://github.com/onadrog",
-                },
-            ],
-        },
-    ],
+    author: {
+        os: "ArchLinux",
+        profilePic: pic,
+        shell: "Zsh",
+        bio: "I'm a web developer who loves making stuff and woodworking.",
+        firstname: "Sébastien",
+        lastname: "Gordano",
+        socials: [
+            {
+                name: "github",
+                link: "https://github.com/onadrog",
+            },
+        ],
+    },
 };

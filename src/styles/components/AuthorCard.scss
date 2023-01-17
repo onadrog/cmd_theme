@@ -1,0 +1,45 @@
+.card-author {
+    padding: 1em;
+    max-width: 69ch;
+    min-width: 40ch;
+    overflow: hidden;
+    border-radius: 0.5em;
+    text-align: start;
+    margin: 0 auto;
+    font-weight: 700;
+
+    &--header {
+        display: grid;
+        grid-template-areas:
+            "avatar spec"
+            "avatar spec";
+        place-items: center;
+        h3,
+        strong {
+            color: hsl(var(--accent-2));
+        }
+        strong {
+            font-family: "HackBold";
+        }
+        picture {
+            grid-area: avatar;
+        }
+        .tilted {
+            color: hsl(var(--accent));
+        }
+        h3 {
+            position: relative;
+            width: fit-content;
+            &::before {
+                position: absolute;
+                content: "@" / "";
+                color: hsl(var(--accent));
+                left: var(--length);
+            }
+        }
+    }
+}
+.card-author--spec {
+    grid-area: spec;
+    margin-block: 1.6em;
+}
