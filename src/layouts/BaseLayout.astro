@@ -18,11 +18,10 @@ const { className = "container", ...head } = Astro.props;
         <Head {...head} />
     </head>
     <body>
-        <Navigation />
         <slot name="header">
             <CmdHeader title={head.title} />
         </slot>
-        <slot name="aside" />
+        <Navigation />
         <main class={className} id="main">
             <slot name="main"><slot /></slot>
         </main>

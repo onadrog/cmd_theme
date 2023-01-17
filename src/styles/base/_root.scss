@@ -23,11 +23,15 @@
 body {
     font-size: var(--fs-0);
     display: grid;
-    grid-template-rows: repeat(2, auto) 1fr auto;
+    grid-template-areas: "nav" "header" "main" "footer";
     place-items: center;
     background-color: hsl(var(--base));
     color: hsl(var(--txtc));
     font-family: "HackRegular", sans-serif;
+    grid-auto-rows: auto auto 1fr auto;
+    > main {
+        grid-area: main;
+    }
 }
 
 .hidden-menu {
@@ -59,6 +63,7 @@ body {
     border: 0;
 }
 .navigation {
+    grid-area: nav;
     --spacing: 2em;
     padding: var(--spacing);
     font-weight: bold;
@@ -75,10 +80,11 @@ body {
 }
 
 .grid {
-    // place-items: center;
+    place-content: center;
     max-width: 80vw;
     display: grid;
     gap: 1rem;
+    margin: auto;
     @media (min-width: 40em) {
         grid-template-columns: repeat(auto-fit, 35ch);
         grid-auto-rows: 1fr;
