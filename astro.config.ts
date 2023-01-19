@@ -22,11 +22,19 @@ export default defineConfig({
         }),
         compress({
             css: false,
-            html: true,
+            html: {
+                removeComments: true,
+                removeAttributeQuotes: false,
+            },
             img: false,
             js: false,
-            svg: false,
+            svg: true,
         }),
         prefetch(),
     ],
+    vite: {
+        build: {
+            assetsInlineLimit: 0,
+        },
+    },
 });
