@@ -1,31 +1,8 @@
-@use "../mixins" as *;
-@use "sass:color";
-
-.btn {
-    cursor: pointer;
-    padding: 1em 1.6em;
-    border-radius: 100vmax;
-    font-family: "HackBold";
-    width: max-content;
-}
-
-.tag {
+.tag-link {
+    z-index: 3;
     padding: 0.3em;
     border-radius: 0.3em;
-    color: hsl(var(--neutral));
-    font-weight: bold;
-}
-
-@include btn("primary") {
-    background-color: hsl(var(--neutral));
-    color: hsl(var(--accent));
-    &:hover,
-    &:focus-visible {
-        background-color: hsl(var(--neutral-lighten));
-        box-shadow: 0 1px 0.2em 0 hsl(var(--base));
-    }
-}
-@include tag("link") {
+    font-family: "HackBold";
     max-width: max-content;
     transition: 0.3s;
     color: hsl(var(--base-darker));
@@ -169,4 +146,26 @@
 }
 .rounded {
     border-radius: 100%;
+}
+.flex-wrap {
+    display: flex;
+    flex-flow: row;
+    gap: 0.3rem;
+    place-content: center;
+    flex-wrap: wrap;
+}
+.blog-metadata {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    justify-content: flex-start;
+    margin-block: 1rem;
+    & .pubDate {
+        color: hsl(var(--neutral));
+        font-family: "HackBold";
+    }
+}
+.tag-nav {
+    max-width: 50vw;
+    margin-block: 0.6rem;
 }

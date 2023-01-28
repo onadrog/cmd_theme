@@ -33,15 +33,5 @@
     }
     &-tags {
         grid-area: tags;
-        display: flex;
-        flex-flow: row;
-        gap: 0.3rem;
-        place-content: center;
-        flex-wrap: wrap;
-        &-link {
-            padding: 0.3rem 0.6rem;
-            position: relative;
-            border-radius: 0.3rem;
-        }
     }
 }
