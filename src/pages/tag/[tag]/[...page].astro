@@ -6,12 +6,10 @@ import { CollectionEntry, getCollection } from "astro:content";
 
 export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
     const allPosts = await getCollection("blog");
-    const uniqueTag = [
-        ...new Set(allPosts.map((p) => p.data.tags).flat()),
-    ];
+    const uniqueTag = [...new Set(allPosts.map((p) => p.data.tags).flat())];
     return uniqueTag.map((tag) => {
-        const filtered = allPosts.filter((p) =>
-            p.data.tags.includes(tag) && !p.data.draft
+        const filtered = allPosts.filter(
+            (p) => p.data.tags.includes(tag) && !p.data.draft
         );
         return paginate(filtered, {
             params: { tag },
@@ -21,13 +19,12 @@ export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
 }
 
 interface page extends Omit<Page, "data"> {
-    data: CollectionEntry<"blog">[]
+    data: CollectionEntry<"blog">[];
 }
 
 interface Props {
-    page: page
+    page: page;
 }
-
 
 const { tag } = Astro.params;
 const { page } = Astro.props;
@@ -41,20 +38,15 @@ const { page } = Astro.props;
 >
     <Fragment slot="main">
         {
-            page.data.map(
-                ({
-                    slug,
-                    data,
-                }) => (
-                    <Card
-                        title={data.title}
-                        pubDate={data.pubDate}
-                        description={data.description}
-                        url={`/blog/${slug}`}
-                        tags={data.tags}
-                    />
-                )
-            )
+            page.data.map(({ slug, data }) => (
+                <Card
+                    title={data.title}
+                    pubDate={data.pubDate}
+                    description={data.description}
+                    url={`/blog/${slug}`}
+                    tags={data.tags}
+                />
+            ))
         }
         {
             page.lastPage > 1 && (

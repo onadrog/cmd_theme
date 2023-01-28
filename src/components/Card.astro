@@ -1,19 +1,21 @@
 ---
 import "../styles/components/_card.scss";
-import type { Frontmatter } from "../utils/types/frontmatter";
 import { site } from "../data/site";
+import type { CollectionEntry } from "astro:content";
 
-let { title, url, description, tags, pubDate } = Astro.props as Frontmatter;
-url = new URL(url, Astro.site).toString();
+export type Props = Omit<CollectionEntry<"blog">["data"], "draft"> & {
+    url: string;
+};
+const { title, url, description, tags, pubDate } = Astro.props;
 ---
 
 <article class="card term">
-    <a class="card-title" href={url}
+    <a class="card-title" href={new URL(url, Astro.site).toString()}
         ><h3>{title}</h3>
         <span aria-hidden="true" class="card-link"></span>
     </a>
     <p class="card-pubDate">
-        <time datetime={pubDate}
+        <time datetime={pubDate.toString()}
             >{
                 new Date(pubDate).toLocaleString(site.lang, {
                     dateStyle: "medium",
@@ -24,10 +26,10 @@ url = new URL(url, Astro.site).toString();
     <p class="card-content">
         {description}...
     </p>
-    <ul class="card-tags">
+    <ul class="flex-wrap card-tags">
         {
             tags.map((t) => (
-                <li class="card-tags-link tag-link">
+                <li class="tag-link">
                     <a href={`${new URL(`/tag/${t}`, Astro.site).toString()}`}>
                         <span aria-hidden="true"># </span>
                         {t}

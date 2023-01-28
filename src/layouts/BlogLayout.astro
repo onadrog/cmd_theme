@@ -3,10 +3,11 @@ import type { CollectionEntry } from "astro:content";
 import Footer from "../components/Footer.astro";
 import Head from "../components/Head.astro";
 import Navigation from "../components/Navigation.astro";
+import TagNav from "../components/TagNav.astro";
 import { site } from "../data/site";
 
 type Props = CollectionEntry<"blog">["data"];
-const { title, description } = Astro.props;
+const { title, description, tags, pubDate } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -17,8 +18,20 @@ const { title, description } = Astro.props;
     <body>
         <Navigation />
         <main id="main" class="container">
+            <h1>{title}</h1>
+            <div class="blog-metadata">
+                <TagNav {tags} />
+                <p class="pubDate">
+                    <time datetime={pubDate.toString()}
+                        >{
+                            new Date(pubDate).toLocaleString(site.lang, {
+                                dateStyle: "medium",
+                            })
+                        }</time
+                    >
+                </p>
+            </div>
             <article>
-                <h1>{title}</h1>
                 <slot />
             </article>
         </main>
