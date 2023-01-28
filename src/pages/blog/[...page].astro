@@ -1,17 +1,17 @@
 ---
-interface Props {
-    page: Page;
+type Props = {
+    page: Page<CollectionEntry<"blog">>;
 }
 
 import type { Page } from "astro";
-import type { Frontmatter } from "../../utils/types/frontmatter";
 import Card from "../../components/Card.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import type { GetStaticPathsOptions } from "astro";
+import { CollectionEntry, getCollection } from "astro:content";
 
 export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
-    const allPosts = await Astro.glob("./*.md");
-    const posts = allPosts.filter((post) => !post.frontmatter.draft);
+    const allPosts = await getCollection("blog");
+    const posts = allPosts.filter((post) => !post.data.draft);
     return paginate(posts, { pageSize: 9 });
 }
 const { page } = Astro.props;
@@ -23,24 +23,15 @@ const desc = "liste des posts";
     <section slot="main" class="grid">
         <h2 class="sr-only">List of blog posts</h2>
         {
-            page.data.map(
-                ({
-                    frontmatter,
-                    url,
-                }: {
-                    frontmatter: Frontmatter;
-                    url: string;
-                }) => (
-                    <Card
-                        title={frontmatter.title}
-                        pubDate={frontmatter.pubDate}
-                        description={frontmatter.description}
-                        url={url}
-                        image={frontmatter.image}
-                        tags={frontmatter.tags}
-                    />
-                )
-            )
+            page.data.map(({ data, slug }) => (
+                <Card
+                    title={data.title}
+                    pubDate={data.pubDate}
+                    description={data.description}
+                    url={`/blog/${slug}`}
+                    tags={data.tags}
+                />
+            ))
         }
         {
             page.lastPage > 1 && (

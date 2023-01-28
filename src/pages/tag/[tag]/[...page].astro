@@ -1,17 +1,17 @@
 ---
 import Card from "../../../components/Card.astro";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
-import type { Frontmatter } from "../../../utils/types/frontmatter";
-import type { GetStaticPathsOptions } from "astro";
+import type { Page, GetStaticPathsOptions } from "astro";
+import { CollectionEntry, getCollection } from "astro:content";
 
 export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
-    const allPosts = await Astro.glob("../../blog/*.md");
+    const allPosts = await getCollection("blog");
     const uniqueTag = [
-        ...new Set(allPosts.map((p) => p.frontmatter.tags).flat()),
+        ...new Set(allPosts.map((p) => p.data.tags).flat()),
     ];
     return uniqueTag.map((tag) => {
         const filtered = allPosts.filter((p) =>
-            p.frontmatter.tags.includes(tag)
+            p.data.tags.includes(tag) && !p.data.draft
         );
         return paginate(filtered, {
             params: { tag },
@@ -19,6 +19,16 @@ export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
         });
     });
 }
+
+interface page extends Omit<Page, "data"> {
+    data: CollectionEntry<"blog">[]
+}
+
+interface Props {
+    page: page
+}
+
+
 const { tag } = Astro.params;
 const { page } = Astro.props;
 ---
@@ -33,19 +43,15 @@ const { page } = Astro.props;
         {
             page.data.map(
                 ({
-                    frontmatter,
-                    url,
-                }: {
-                    frontmatter: Frontmatter;
-                    url: string;
+                    slug,
+                    data,
                 }) => (
                     <Card
-                        title={frontmatter.title}
-                        pubDate={frontmatter.pubDate}
-                        description={frontmatter.description}
-                        url={url}
-                        image={frontmatter.image}
-                        tags={frontmatter.tags}
+                        title={data.title}
+                        pubDate={data.pubDate}
+                        description={data.description}
+                        url={`/blog/${slug}`}
+                        tags={data.tags}
                     />
                 )
             )

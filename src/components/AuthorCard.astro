@@ -1,13 +1,20 @@
 ---
-import Avatar from "./Avatar.astro";
 import "../styles/components/AuthorCard.scss";
 import { site } from "../data/site";
 const a = site.author;
+import { Picture } from "@astrojs/image/components";
 ---
 
 <article class="term card-author">
     <header class="card-author--header">
-        <Avatar imageSrc={a.profilePic} />
+        <Picture
+            alt=""
+            sizes="(max-width: 375px) 75px, 150px"
+            src={a.profilePic}
+            class="rounded"
+            widths={[75, 150]}
+            aspectRatio={1}
+        />
         <div class="card-author--spec">
             <h3 style={`--length: ${a.firstname.length}ch;`}>
                 {a.firstname}

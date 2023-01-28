@@ -1,9 +1,8 @@
 ---
-layout: ../../layouts/BlogLayout.astro
 title: My Second Blog Post
-author: Astro Learner
 description: "After learning some Astro, I couldn't stop!"
 pubDate: 2022-07-08
+draft: true
 tags: ["astro", "blogging", "learning in public", "successes"]
 ---
 

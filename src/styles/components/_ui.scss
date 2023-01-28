@@ -26,6 +26,7 @@
     }
 }
 @include tag("link") {
+    max-width: max-content;
     transition: 0.3s;
     color: hsl(var(--base-darker));
     background-color: hsl(var(--accent-2));

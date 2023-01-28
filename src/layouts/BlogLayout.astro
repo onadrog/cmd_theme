@@ -1,12 +1,12 @@
 ---
+import type { CollectionEntry } from "astro:content";
 import Footer from "../components/Footer.astro";
 import Head from "../components/Head.astro";
 import Navigation from "../components/Navigation.astro";
 import { site } from "../data/site";
-const {
-    frontmatter: { title, description },
-    className = "container",
-} = Astro.props;
+
+type Props = CollectionEntry<"blog">["data"];
+const { title, description } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -15,10 +15,10 @@ const {
         <Head title={title} description={description} />
     </head>
     <body>
-        <header><h1>{title}</h1></header>
         <Navigation />
-        <main id="main" class={className}>
+        <main id="main" class="container">
             <article>
+                <h1>{title}</h1>
                 <slot />
             </article>
         </main>
