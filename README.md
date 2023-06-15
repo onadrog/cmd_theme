@@ -19,6 +19,7 @@ A theme for astro.
 -   [Pnpm](https://pnpm.io/https://pnpm.io/)
 
 ```bash
+$ pnpm install # install dependencies
 $ pnpm run dev # run the dev env
 $ pnpm run build # check astro and ts files and build your site
 $ pnpm run build:prev # build the site without check and run the preview command
