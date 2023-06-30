@@ -6,6 +6,8 @@ A theme for astro.
 ![blog posts list](_imgs/cmd_2.png)
 ![about page](_imgs/cmd_3.png)
 
+[Live Preview](https://onadrog.github.io/onadrog)
+
 ## Feat
 
 -   Use Sass
