@@ -1,5 +1,6 @@
 ---
 import { Icon } from "astro-icon";
+import { getSiteURL } from "../utils/getSiteUrl";
 const year = new Date().getFullYear();
 ---
 
@@ -17,7 +18,10 @@ const year = new Date().getFullYear();
         </a>
     </address>
     <p class="footer-links">
-        <a class="footer-links--rss" href="/rss.xml" target="_blank"
+        <a
+            class="footer-links--rss"
+            href={getSiteURL("rss.xml", Astro.site).toString()}
+            target="_blank"
             ><span class="sr-only">RSS Feed</span>
             <Icon name="rss" size={18} aria-hidden="true" />
         </a>

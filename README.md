@@ -19,6 +19,7 @@ A theme for astro.
 -   [Pnpm](https://pnpm.io/https://pnpm.io/)
 
 ```bash
+$ mv .env.example .env # set your site URL and base
 $ pnpm install # install dependencies
 $ pnpm run dev # run the dev env
 $ pnpm run build # check astro and ts files and build your site
@@ -27,6 +28,8 @@ $ pnpm run build:prev # build the site without check and run the preview command
 
 ## Site data
 
+You must set the variables in the .env file ( rename .env.example to .env if
+you haven't already do that)
 You can modify default values in data/site.ts file.
 
 ## Astroadd cli

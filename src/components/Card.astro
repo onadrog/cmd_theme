@@ -2,6 +2,7 @@
 import "../styles/components/_card.scss";
 import { site } from "../data/site";
 import type { CollectionEntry } from "astro:content";
+import { getSiteURL } from "../utils/getSiteUrl";
 
 export type Props = Omit<CollectionEntry<"blog">["data"], "draft"> & {
     url: string;
@@ -10,7 +11,7 @@ const { title, url, description, tags, pubDate } = Astro.props;
 ---
 
 <article class="card term">
-    <a class="card-title" href={new URL(url, Astro.site).toString()}
+    <a class="card-title" href={getSiteURL(url, Astro.site).toString()}
         ><h3>{title}</h3>
         <span aria-hidden="true" class="card-link"></span>
     </a>
@@ -30,7 +31,12 @@ const { title, url, description, tags, pubDate } = Astro.props;
         {
             tags.map((t) => (
                 <li class="tag-link">
-                    <a href={`${new URL(`/tag/${t}`, Astro.site).toString()}`}>
+                    <a
+                        href={`${getSiteURL(
+                            `tag/${t}`,
+                            Astro.site
+                        ).toString()}`}
+                    >
                         <span aria-hidden="true"># </span>
                         {t}
                     </a>

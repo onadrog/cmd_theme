@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from "astro:content";
+import { getSiteURL } from "../utils/getSiteUrl";
 
 export type Props = Pick<CollectionEntry<"blog">["data"], "tags">;
 
@@ -12,7 +13,7 @@ const { tags } = Astro.props;
             tags.map((t) => (
                 <li class="tag-link">
                     <span aria-hidden="true">#</span>
-                    <a href={new URL(`/tag/${t}`, Astro.site).toString()}>
+                    <a href={getSiteURL(`tag/${t}`, Astro.site).toString()}>
                         {t}
                     </a>
                 </li>
