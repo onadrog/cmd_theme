@@ -1,4 +1,4 @@
-lockfileVersion: '6.1'
+lockfileVersion: '6.0'
 
 settings:
   autoInstallPeers: true
@@ -44,6 +44,9 @@ devDependencies:
   simple-astro-seo:
     specifier: ^0.1.3
     version: 0.1.3
+  svgo:
+    specifier: '2.8'
+    version: 2.8.0
   typescript:
     specifier: ^4.9.5
     version: 4.9.5
